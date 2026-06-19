@@ -1,3 +1,6 @@
+/* Estilos globales del frontend.
+   Este archivo define la apariencia comun de toda la app React:
+   fondo, tipografias, botones, tarjetas y layout responsive. */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

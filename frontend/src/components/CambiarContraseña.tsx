@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
 
+// Formulario controlado para que el usuario autenticado cambie su propia contraseña.
 export default function CambiarContraseña() {
   const { token } = useContext(AuthContext);
   const [contraseñaActual, setContraseñaActual] = useState('');
@@ -10,8 +11,9 @@ export default function CambiarContraseña() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(contraseñaActual,nuevaContraseña);
+
     try {
+      // PUT /usuarios/password envia el body con contraseñaActual y nuevaContraseña.
       await axios.put(
         'http://localhost:3000/usuarios/password',
         { contraseñaActual, nuevaContraseña },
@@ -20,15 +22,14 @@ export default function CambiarContraseña() {
       setMensaje('Contraseña actualizada correctamente');
       setContraseñaActual('');
       setNuevaContraseña('');
-    } catch (err) {
-      console.error(err);
-      setMensaje('Error al actualizar la contraseña');
+    } catch (err: any) {
+      setMensaje(err.response?.data?.error || 'Error al cambiar contraseña');
     }
   };
 
   return (
     <div style={{ padding: 20 }}>
-      <h3>Cambiar contraseña</h3>
+      <h2>Cambiar contraseña</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="password"
@@ -44,10 +45,9 @@ export default function CambiarContraseña() {
           onChange={(e) => setNuevaContraseña(e.target.value)}
           required
         /><br />
-        <button type="submit" className="editar">Guardar</button>
+        <button type="submit">Actualizar</button>
       </form>
       {mensaje && <p>{mensaje}</p>}
     </div>
   );
 }
-

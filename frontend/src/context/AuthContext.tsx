@@ -15,6 +15,7 @@ interface AuthContextProps {
   logout: () => void;
 }
 
+// Context permite compartir datos sin pasarlos manualmente por props en cada nivel.
 export const AuthContext = createContext<AuthContextProps>({
   token: null,
   usuario: null,
@@ -22,16 +23,20 @@ export const AuthContext = createContext<AuthContextProps>({
   logout: () => {},
 });
 
+// AuthProvider es componente padre: recibe children por props y les entrega token, usuario y funciones.
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  // useState crea estado local del provider. localStorage conserva el token si se recarga la pagina.
   const [token, setToken] = useState<string | null>(localStorage.getItem('token'));
   const [usuario, setUsuario] = useState<Usuario | null>(null);
 
+  // login lo llama Login.tsx cuando el backend responde correctamente.
   const login = (nuevoToken: string, datosUsuario: Usuario) => {
     localStorage.setItem('token', nuevoToken);
     setToken(nuevoToken);
     setUsuario(datosUsuario);
   };
 
+  // logout borra estado en React y persistencia en localStorage.
   const logout = () => {
     localStorage.removeItem('token');
     setToken(null);
@@ -39,6 +44,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
+    // value define que datos reciben los componentes hijos al usar useContext(AuthContext).
     <AuthContext.Provider value={{ token, usuario, login, logout }}>
       {children}
     </AuthContext.Provider>

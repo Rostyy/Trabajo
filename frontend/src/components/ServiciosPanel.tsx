@@ -4,8 +4,10 @@ import { AuthContext } from '../context/AuthContext';
 import FormularioServicio from './FormularioServicio';
 import type { Servicio, ServicioForm, Dispositivo, Usuario } from './FormularioServicio';
 
+// ServiciosPanel representa los trabajos tecnicos.
+// Carga servicios, dispositivos y usuarios para poder mostrar y editar relaciones.
 export default function ServiciosPanel() {
-  const { token } = useContext(AuthContext);
+  const { token, usuario } = useContext(AuthContext);
   const [servicios, setServicios] = useState<Servicio[]>([]);
   const [dispositivos, setDispositivos] = useState<Dispositivo[]>([]);
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
@@ -14,22 +16,37 @@ export default function ServiciosPanel() {
 
   const cargarDatos = async () => {
     try {
-      const [servRes, dispRes, userRes] = await Promise.all([
+      // El panel siempre necesita servicios y dispositivos.
+      const requests = [
         axios.get('http://localhost:3000/servicios', { headers: { Authorization: `Bearer ${token}` } }),
         axios.get('http://localhost:3000/dispositivos', { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get('http://localhost:3000/usuarios', { headers: { Authorization: `Bearer ${token}` } }),
-      ]);
+      ];
+
+      if (usuario?.rol === 'admin') {
+        // Solo admin puede consultar todos los usuarios.
+        requests.push(axios.get('http://localhost:3000/usuarios', { headers: { Authorization: `Bearer ${token}` } }));
+      }
+
+      const [servRes, dispRes, userRes] = await Promise.all(requests);
       setServicios(servRes.data);
       setDispositivos(dispRes.data);
-      setUsuarios(userRes.data);
+      setUsuarios(
+        // Si es tecnico, no llama /usuarios: arma una lista local con su propio usuario.
+        usuario?.rol === 'admin'
+          ? userRes.data
+          : usuario
+            ? [{ id_usuario: usuario.id, nombre: usuario.nombre }]
+            : []
+      );
     } catch (err) {
       console.error('Error al cargar servicios, dispositivos o usuarios', err);
     }
   };
 
   useEffect(() => {
+    // Ciclo de vida: al montar o cambiar token/usuario, recarga datos del backend.
     cargarDatos();
-  }, [token]);
+  }, [token, usuario]);
 
   const obtenerDispositivo = (id: number) => {
     const d = dispositivos.find((d) => d.id_dispositivo === id);
@@ -44,10 +61,12 @@ export default function ServiciosPanel() {
   const guardarServicio = async (form: ServicioForm) => {
     try {
       if (servicioSeleccionado) {
+        // PUT modifica un servicio existente; backend valida si el tecnico es el asignado.
         await axios.put(`http://localhost:3000/servicios/${servicioSeleccionado.id_servicio}`, form, {
           headers: { Authorization: `Bearer ${token}` },
         });
       } else {
+        // POST crea un servicio/trabajo nuevo.
         await axios.post('http://localhost:3000/servicios', form, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -105,12 +124,14 @@ export default function ServiciosPanel() {
               >
                 Editar
               </button>{' '}
-              <button
-                className="eliminar"
-                onClick={() => eliminarServicio(s.id_servicio)}
-              >
-                Eliminar
-              </button>
+              {usuario?.rol === 'admin' && (
+                <button
+                  className="eliminar"
+                  onClick={() => eliminarServicio(s.id_servicio)}
+                >
+                  Eliminar
+                </button>
+              )}
             </div>
           </div>
         ))}
