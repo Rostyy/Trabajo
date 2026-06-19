@@ -16,12 +16,13 @@ interface Cliente {
 }
 
 interface FormularioClienteProps {
-  clienteInicial?: Cliente; // ← con `?`
+  clienteInicial?: Cliente;
+  // Funciones recibidas por props desde ClientesPanel.
   onGuardar: (data: ClienteForm) => void;
   onCancelar: () => void;
 }
 
-
+// Formulario controlado: React administra los valores mediante useState.
 export default function FormularioCliente({
   clienteInicial,
   onGuardar,
@@ -35,6 +36,7 @@ export default function FormularioCliente({
   });
 
   useEffect(() => {
+    // Ciclo de vida: cuando clienteInicial cambia, se precarga el formulario para editar.
     if (clienteInicial) {
       const { nombre, cuit, contacto, email } = clienteInicial;
       setForm({ nombre, cuit, contacto, email });
@@ -43,6 +45,7 @@ export default function FormularioCliente({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Devuelve los datos al componente padre; el padre decide POST o PUT.
     onGuardar(form);
   };
 

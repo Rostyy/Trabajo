@@ -10,15 +10,22 @@ interface Cliente {
   nombre: string;
 }
 
+interface OficinaConCliente extends Oficina {
+  cliente_nombre?: string;
+}
+
+// OficinasPanel carga oficinas y clientes para mostrar la relacion oficina -> cliente.
 export default function OficinasPanel() {
-  const { token } = useContext(AuthContext);
-  const [oficinas, setOficinas] = useState<Oficina[]>([]);
+  const { token, usuario } = useContext(AuthContext);
+  // Estado de listas: oficinas se renderiza; clientes se usa para resolver nombres en formularios.
+  const [oficinas, setOficinas] = useState<OficinaConCliente[]>([]);
   const [clientes, setClientes] = useState<Cliente[]>([]);
   const [mostrarModal, setMostrarModal] = useState(false);
   const [oficinaSeleccionada, setOficinaSeleccionada] = useState<Oficina | undefined>(undefined);
 
   const cargarDatos = async () => {
     try {
+      // Promise.all ejecuta ambos GET en paralelo: oficinas y clientes.
       const [ofRes, clRes] = await Promise.all([
         axios.get('http://localhost:3000/oficinas', {
           headers: { Authorization: `Bearer ${token}` },
@@ -35,6 +42,7 @@ export default function OficinasPanel() {
   };
 
   useEffect(() => {
+    // Ciclo de vida: carga inicial del modulo y recarga si cambia el token.
     cargarDatos();
   }, [token]);
 
@@ -46,10 +54,12 @@ export default function OficinasPanel() {
   const guardarOficina = async (form: OficinaForm) => {
     try {
       if (oficinaSeleccionada) {
+        // PUT envia nuevos datos y usa req.params.id en backend.
         await axios.put(`http://localhost:3000/oficinas/${oficinaSeleccionada.id_oficina}`, form, {
           headers: { Authorization: `Bearer ${token}` },
         });
       } else {
+        // POST crea una oficina; id_cliente conecta con la tabla clientes.
         await axios.post('http://localhost:3000/oficinas', form, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -78,6 +88,7 @@ export default function OficinasPanel() {
     <div style={{ padding: 20 }}>
       <h2>
         Oficinas{' '}
+        {usuario?.rol === 'admin' && (
         <button
           onClick={() => {
             setOficinaSeleccionada(undefined);
@@ -87,14 +98,17 @@ export default function OficinasPanel() {
         >
           ➕
         </button>
+        )}
       </h2>
 
       <div className="cards-container">
         {oficinas.map((of) => (
+          // key estable: id_oficina es la clave primaria en la base.
           <div key={of.id_oficina} className="card">
-            <h3>{obtenerNombreCliente(of.id_cliente)}</h3>
+            <h3>{of.cliente_nombre || obtenerNombreCliente(of.id_cliente)}</h3>
             <p><strong>Dirección:</strong> {of.direccion}</p>
             <p><strong>Ciudad:</strong> {of.ciudad}</p>
+            {usuario?.rol === 'admin' && (
             <div style={{ marginTop: '10px' }}>
               <button
                 className="editar"
@@ -109,6 +123,7 @@ export default function OficinasPanel() {
                 Eliminar
               </button>
             </div>
+            )}
           </div>
         ))}
       </div>

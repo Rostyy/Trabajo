@@ -8,38 +8,39 @@ import ServiciosPanel from '../components/ServiciosPanel';
 import UsuariosPanel from '../components/UsuariosPanel';
 import CambiarContraseña from '../components/CambiarContraseña';
 
-
+// Panel es el componente padre de los modulos internos.
+// Su estado "vista" decide que panel hijo se renderiza.
 export default function Panel() {
   const { usuario, logout } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [vista, setVista] = useState<string>(''); // 👈 definir el estado de vista
+  const [vista, setVista] = useState<string>('');
 
-  /** CONFIRMAR PARA CERRAR SESION */
   const cerrarSesion = () => {
     const confirmar = window.confirm('¿Estás seguro de que querés cerrar sesión?');
     if (confirmar) {
+      // logout limpia token/usuario del contexto y localStorage.
       logout();
       navigate('/');
     }
   };
 
   return (
-    <div className='root'>
+    <div className="root">
       <h2>Bienvenido, {usuario?.nombre}</h2>
       <p>Rol: {usuario?.rol}</p>
 
-      <div className='panel-header'>
+      <div className="panel-header">
+        {/* Cada boton cambia el estado "vista"; React vuelve a renderizar y muestra el componente elegido. */}
         <button onClick={() => setVista('clientes')}>Clientes</button>{' '}
         <button onClick={() => setVista('oficinas')}>Oficinas</button>{' '}
         <button onClick={() => setVista('dispositivos')}>Dispositivos</button>{' '}
         <button onClick={() => setVista('servicios')}>Servicios</button>{' '}
         <button onClick={() => setVista('usuarios')}>Usuarios</button>{' '}
         <button onClick={() => setVista('cambiarPassword')}>Cambiar contraseña</button>{' '}
-        {/* BOTON PARA CERRAR SESION */}
         <button onClick={cerrarSesion}>Cerrar sesión</button>
       </div>
 
-      {/* Mostrar componente según vista seleccionada */}
+      {/* Renderizado condicional: se monta solo el modulo seleccionado. */}
       {vista === 'clientes' && <ClientesPanel />}
       {vista === 'oficinas' && <OficinasPanel />}
       {vista === 'dispositivos' && <DispositivosPanel />}

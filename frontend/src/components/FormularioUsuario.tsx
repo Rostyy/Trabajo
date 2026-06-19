@@ -4,7 +4,7 @@ export interface UsuarioForm {
   nombre: string;
   email: string;
   rol: string;
-  password?: string; // ← importante que sea opcional
+  password?: string;
 }
 
 export interface Usuario {
@@ -20,16 +20,17 @@ interface Props {
   onCancelar: () => void;
 }
 
+// Formulario controlado para usuarios. Si usuarioInicial existe, funciona como edicion.
 export default function FormularioUsuario({ usuarioInicial, onGuardar, onCancelar }: Props) {
   const [form, setForm] = useState<UsuarioForm>({
-  nombre: '',
-  email: '',
-  rol: 'tecnico',
-  password: '', // aunque sea opcional, ayuda a prevenir errores
-});
-
+    nombre: '',
+    email: '',
+    rol: 'tecnico',
+    password: '',
+  });
 
   useEffect(() => {
+    // Al editar, no se precarga password por seguridad; queda opcional.
     if (usuarioInicial) {
       const { nombre, email, rol } = usuarioInicial;
       setForm({ nombre, email, rol, password: '' });
@@ -39,6 +40,7 @@ export default function FormularioUsuario({ usuarioInicial, onGuardar, onCancela
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const data = { ...form };
+    // Si password esta vacio en edicion, no se envia al backend.
     if (!data.password) {
       delete data.password;
     }
@@ -73,27 +75,13 @@ export default function FormularioUsuario({ usuarioInicial, onGuardar, onCancela
             <option value="tecnico">Técnico</option>
             <option value="cliente">Cliente</option>
           </select><br />
-          {usuarioInicial ? (
-            <>
-              <input
-                type="password"
-                placeholder="Nueva contraseña (opcional)"
-                value={form.password || ''}
-                onChange={(e) => setForm({ ...form, password: e.target.value })}
-              /><br />
-            </>
-          ) : (
-            <>
-              <input
-                type="password"
-                placeholder="Contraseña"
-                value={form.password || ''}
-                onChange={(e) => setForm({ ...form, password: e.target.value })}
-                required
-              /><br />
-            </>
-          )}
-          <br />
+          <input
+            type="password"
+            placeholder={usuarioInicial ? 'Nueva contraseña (opcional)' : 'Contraseña'}
+            value={form.password || ''}
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+            required={!usuarioInicial}
+          /><br /><br />
           <button type="submit" className="editar">Guardar</button>{' '}
           <button type="button" className="eliminar" onClick={onCancelar}>Cancelar</button>
         </form>

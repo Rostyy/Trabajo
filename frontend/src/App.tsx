@@ -3,20 +3,25 @@ import Login from './views/Login';
 import Panel from './views/Panel';
 import RutaPrivada from './components/RutaPrivada';
 import { AuthProvider } from './context/AuthContext';
-//import './index.css';
 
-
+// App define la arquitectura principal del frontend.
+// AuthProvider envuelve toda la aplicacion para que cualquier componente pueda leer token/usuario.
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
+          {/* Ruta publica: login. */}
           <Route path="/" element={<Login />} />
-          <Route path="/panel" element={
-            <RutaPrivada>
-              <Panel />
-            </RutaPrivada>
-          } />
+          {/* Ruta protegida: solo se muestra si RutaPrivada encuentra token en AuthContext. */}
+          <Route
+            path="/panel"
+            element={
+              <RutaPrivada>
+                <Panel />
+              </RutaPrivada>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
@@ -24,4 +29,3 @@ function App() {
 }
 
 export default App;
-

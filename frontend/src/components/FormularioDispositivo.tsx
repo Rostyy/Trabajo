@@ -11,20 +11,36 @@ export interface DispositivoForm {
 export interface Dispositivo {
   id_dispositivo: number;
   id_oficina: number;
+  id_cliente?: number;
   tipo: string;
   marca: string;
   modelo: string;
   estado: string;
-}
-export interface Oficina {
-  id_oficina: number;
-  direccion: string;
-  ciudad: string;
+  oficina_direccion?: string;
+  oficina_ciudad?: string;
+  cliente_nombre?: string;
 }
 
+export interface Oficina {
+  id_oficina: number;
+  id_cliente?: number;
+  direccion: string;
+  ciudad: string;
+  cliente_nombre?: string;
+}
+
+// Valores cerrados para evitar textos libres distintos en la base de datos.
+const condicionesDispositivo = [
+  { value: 'operativo', label: 'Operativo' },
+  { value: 'con fallas', label: 'Con fallas' },
+  { value: 'en reparación', label: 'En reparación' },
+  { value: 'fuera de servicio', label: 'Fuera de servicio' },
+  { value: 'de baja', label: 'De baja' },
+];
 
 interface Props {
   dispositivoInicial?: Dispositivo;
+  // oficinas llega por props desde DispositivosPanel para llenar el select de ubicacion.
   oficinas: Oficina[];
   onGuardar: (data: DispositivoForm) => void;
   onCancelar: () => void;
@@ -36,15 +52,17 @@ export default function FormularioDispositivo({
   onGuardar,
   onCancelar,
 }: Props) {
+  // Formulario controlado: todos los inputs/selects leen y escriben este estado.
   const [form, setForm] = useState<DispositivoForm>({
     id_oficina: oficinas[0]?.id_oficina || 0,
     tipo: '',
     marca: '',
     modelo: '',
-    estado: 'pendiente',
+    estado: 'operativo',
   });
 
   useEffect(() => {
+    // Si dispositivoInicial existe, se precarga para editar.
     if (dispositivoInicial) {
       const { id_oficina, tipo, marca, modelo, estado } = dispositivoInicial;
       setForm({ id_oficina, tipo, marca, modelo, estado });
@@ -53,6 +71,7 @@ export default function FormularioDispositivo({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Envia el objeto DispositivoForm al panel padre.
     onGuardar(form);
   };
 
@@ -68,7 +87,7 @@ export default function FormularioDispositivo({
           >
             {oficinas.map((of) => (
               <option key={of.id_oficina} value={of.id_oficina}>
-                {of.direccion} ({of.ciudad})
+                {of.cliente_nombre ? `${of.cliente_nombre} - ` : ''}{of.direccion} ({of.ciudad})
               </option>
             ))}
           </select><br />
@@ -93,13 +112,17 @@ export default function FormularioDispositivo({
             onChange={(e) => setForm({ ...form, modelo: e.target.value })}
             required
           /><br />
-          <input
-            type="text"
-            placeholder="Estado"
+          <select
             value={form.estado}
             onChange={(e) => setForm({ ...form, estado: e.target.value })}
             required
-          /><br /><br />
+          >
+            {condicionesDispositivo.map((condicion) => (
+              <option key={condicion.value} value={condicion.value}>
+                {condicion.label}
+              </option>
+            ))}
+          </select><br /><br />
           <button type="submit" className="editar">Guardar</button>{' '}
           <button type="button" className="eliminar" onClick={onCancelar}>Cancelar</button>
         </form>

@@ -6,8 +6,10 @@ import type { Dispositivo, DispositivoForm, Oficina } from './FormularioDisposit
 
 
 
+// DispositivosPanel administra equipos. Carga dispositivos y oficinas para mostrar ubicacion completa.
 export default function DispositivosPanel() {
-  const { token } = useContext(AuthContext);
+  const { token, usuario } = useContext(AuthContext);
+  // dispositivos alimenta el renderizado de tarjetas; oficinas alimenta el select del formulario.
   const [dispositivos, setDispositivos] = useState<Dispositivo[]>([]);
   const [oficinas, setOficinas] = useState<Oficina[]>([]);
   const [mostrarModal, setMostrarModal] = useState(false);
@@ -15,6 +17,7 @@ export default function DispositivosPanel() {
 
   const cargarDatos = async () => {
     try {
+      // Se hacen dos GET en paralelo porque el panel necesita equipos y oficinas.
       const [dispRes, ofiRes] = await Promise.all([
         axios.get('http://localhost:3000/dispositivos', {
           headers: { Authorization: `Bearer ${token}` },
@@ -31,21 +34,34 @@ export default function DispositivosPanel() {
   };
 
   useEffect(() => {
+    // useEffect representa el ciclo de vida de carga: se ejecuta al entrar al modulo.
     cargarDatos();
   }, [token]);
 
   const obtenerOficina = (id_oficina: number) => {
     const oficina = oficinas.find((o) => o.id_oficina === id_oficina);
-    return oficina ? `${oficina.direccion} (${oficina.ciudad})` : `ID ${id_oficina}`;
+    return oficina
+      ? `${oficina.cliente_nombre ? `${oficina.cliente_nombre} - ` : ''}${oficina.direccion} (${oficina.ciudad})`
+      : `ID ${id_oficina}`;
+  };
+
+  const obtenerUbicacion = (disp: Dispositivo) => {
+    if (disp.oficina_direccion && disp.oficina_ciudad) {
+      return `${disp.cliente_nombre ? `${disp.cliente_nombre} - ` : ''}${disp.oficina_direccion} (${disp.oficina_ciudad})`;
+    }
+
+    return obtenerOficina(disp.id_oficina);
   };
 
   const guardarDispositivo = async (form: DispositivoForm) => {
     try {
       if (dispositivoSeleccionado) {
+        // Editar: PUT /dispositivos/:id con body del formulario controlado.
         await axios.put(`http://localhost:3000/dispositivos/${dispositivoSeleccionado.id_dispositivo}`, form, {
           headers: { Authorization: `Bearer ${token}` },
         });
       } else {
+        // Crear: POST /dispositivos. El backend guarda id_oficina, tipo, marca, modelo y estado.
         await axios.post('http://localhost:3000/dispositivos', form, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -87,10 +103,11 @@ export default function DispositivosPanel() {
 
       <div className="cards-container">
         {dispositivos.map((disp) => (
+          // map transforma cada objeto dispositivo en una tarjeta visible.
           <div key={disp.id_dispositivo} className="card">
             <h3>{disp.tipo} - {disp.marca} {disp.modelo}</h3>
-            <p><strong>Ubicación:</strong> {obtenerOficina(disp.id_oficina)}</p>
-            <p><strong>Estado:</strong> {disp.estado}</p>
+            <p><strong>Ubicación:</strong> {obtenerUbicacion(disp)}</p>
+            <p><strong>Condición:</strong> {disp.estado}</p>
             <div style={{ marginTop: '10px' }}>
               <button
                 className="editar"
@@ -101,9 +118,11 @@ export default function DispositivosPanel() {
               >
                 Editar
               </button>{' '}
-              <button className="eliminar" onClick={() => eliminarDispositivo(disp.id_dispositivo)}>
-                Eliminar
-              </button>
+              {usuario?.rol === 'admin' && (
+                <button className="eliminar" onClick={() => eliminarDispositivo(disp.id_dispositivo)}>
+                  Eliminar
+                </button>
+              )}
             </div>
           </div>
         ))}

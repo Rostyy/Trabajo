@@ -31,15 +31,16 @@ export interface Usuario {
   nombre: string;
 }
 
-
 interface Props {
   servicioInicial?: Servicio;
+  // dispositivos y usuarios llegan desde ServiciosPanel para llenar selects.
   dispositivos: Dispositivo[];
   usuarios: Usuario[];
   onGuardar: (data: ServicioForm) => void;
   onCancelar: () => void;
 }
 
+// Formulario controlado para trabajos/servicios.
 export default function FormularioServicio({
   servicioInicial,
   dispositivos,
@@ -57,6 +58,7 @@ export default function FormularioServicio({
   });
 
   useEffect(() => {
+    // Cuando se edita un servicio, sus datos pasan desde la tarjeta al formulario.
     if (servicioInicial) {
       const { id_dispositivo, id_usuario, fecha, tipo, descripcion, estado } = servicioInicial;
       setForm({ id_dispositivo, id_usuario, fecha: fecha.slice(0, 10), tipo, descripcion, estado });
@@ -113,6 +115,7 @@ export default function FormularioServicio({
             placeholder="Descripción"
             value={form.descripcion}
             onChange={(e) => setForm({ ...form, descripcion: e.target.value })}
+            required
           /><br />
           <select
             value={form.estado}

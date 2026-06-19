@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+// Archivo de referencia antiguo: el frontend real esta en /frontend/src.
+// Muestra un ejemplo simple de formulario controlado y envio con fetch, pero no lo importa App.tsx.
 const UsuariosPanel: React.FC = () => {
   const [nombre, setNombre] = useState('');
   const [email, setEmail] = useState('');

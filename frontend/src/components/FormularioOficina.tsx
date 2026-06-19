@@ -5,6 +5,7 @@ export interface Oficina {
   id_cliente: number;
   direccion: string;
   ciudad: string;
+  cliente_nombre?: string;
 }
 
 export interface OficinaForm {
@@ -13,7 +14,6 @@ export interface OficinaForm {
   ciudad: string;
 }
 
-
 interface Cliente {
   id_cliente: number;
   nombre: string;
@@ -21,11 +21,13 @@ interface Cliente {
 
 interface FormularioOficinaProps {
   oficinaInicial?: Oficina;
+  // clientes llega por props desde OficinasPanel para llenar el select.
   clientes: Cliente[];
   onGuardar: (data: OficinaForm) => void;
   onCancelar: () => void;
 }
 
+// Formulario controlado para crear/editar oficinas.
 export default function FormularioOficina({
   oficinaInicial,
   clientes,
@@ -39,6 +41,7 @@ export default function FormularioOficina({
   });
 
   useEffect(() => {
+    // Si se recibe una oficina por props, el formulario entra en modo edicion.
     if (oficinaInicial) {
       const { id_cliente, direccion, ciudad } = oficinaInicial;
       setForm({ id_cliente, direccion, ciudad });
