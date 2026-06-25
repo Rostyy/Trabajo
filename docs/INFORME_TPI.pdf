@@ -1,0 +1,565 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R 21 0 R] /Count 8 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+6 0 obj
+<< /Length 4147 >>
+stream
+BT /F2 17 Tf 48 790 Td (Informe Técnico - Sistema de Gestión de Servicio Técnico) Tj ET
+BT /F2 13 Tf 48 761 Td (Portada) Tj ET
+BT /F1 9 Tf 48 737 Td (Proyecto: Sistema de Gestión de Servicio Técnico) Tj ET
+BT /F1 9 Tf 48 725 Td (Tipo de sistema: Aplicación web full stack) Tj ET
+BT /F1 9 Tf 48 713 Td (Materia: Trabajo Práctico Integrador) Tj ET
+BT /F1 9 Tf 48 701 Td (Integrantes: Completar) Tj ET
+BT /F1 9 Tf 48 689 Td (Docente: Completar) Tj ET
+BT /F1 9 Tf 48 677 Td (Institución: Completar) Tj ET
+BT /F1 9 Tf 48 665 Td (Fecha: Completar) Tj ET
+0.70 0.78 0.85 RG 48 646 m 547 646 l S
+BT /F2 13 Tf 48 629 Td (Índice) Tj ET
+BT /F1 9 Tf 48 605 Td (1. Requerimientos) Tj ET
+BT /F1 9 Tf 48 593 Td (2. Tecnologías utilizadas) Tj ET
+BT /F1 9 Tf 48 581 Td (3. Análisis del sistema) Tj ET
+BT /F1 9 Tf 48 569 Td (4. Planificación) Tj ET
+BT /F1 9 Tf 48 557 Td (5. Riesgos) Tj ET
+BT /F1 9 Tf 48 545 Td (6. Asignación de tareas y roles) Tj ET
+BT /F1 9 Tf 48 533 Td (7. Diseño de base de datos) Tj ET
+BT /F1 9 Tf 48 521 Td (8. Diseño de interfaz) Tj ET
+BT /F1 9 Tf 48 509 Td (9. API del backend) Tj ET
+BT /F1 9 Tf 48 497 Td (10. Componentes del frontend) Tj ET
+BT /F1 9 Tf 48 485 Td (11. Código y flujo de información) Tj ET
+BT /F1 9 Tf 48 473 Td (12. Conclusión) Tj ET
+0.70 0.78 0.85 RG 48 454 m 547 454 l S
+BT /F2 13 Tf 48 437 Td (1. Requerimientos) Tj ET
+BT /F2 10.5 Tf 48 413 Td (Requerimientos del software) Tj ET
+BT /F1 9 Tf 48 392 Td (El sistema permite gestionar información relacionada con un servicio técnico. La aplicación) Tj ET
+BT /F1 9 Tf 48 380 Td (administra clientes, oficinas, dispositivos/equipos, servicios/trabajos técnicos y usuarios) Tj ET
+BT /F1 9 Tf 48 368 Td (con distintos roles.) Tj ET
+BT /F2 10.5 Tf 48 349 Td (Requerimientos funcionales) Tj ET
+BT /F1 7.5 Tf 48 328 Td (Código | Requerimiento | Descripción) Tj ET
+BT /F1 7.5 Tf 48 318 Td (RF01 | Login de usuarios | El usuario debe iniciar sesión con email y contraseña.) Tj ET
+BT /F1 7.5 Tf 48 308 Td (RF02 | Control de acceso por roles | El sistema diferencia permisos entre `admin`, `tecnico` y `cliente`.) Tj ET
+BT /F1 7.5 Tf 48 298 Td (RF03 | Gestión de clientes | El administrador puede crear, listar, editar y eliminar clientes. El técnico) Tj ET
+BT /F1 7.5 Tf 48 288 Td (solo puede verlos.) Tj ET
+BT /F1 7.5 Tf 48 278 Td (RF04 | Gestión de oficinas | El administrador puede crear, listar, editar y eliminar oficinas. El técnico) Tj ET
+BT /F1 7.5 Tf 48 268 Td (solo puede verlas.) Tj ET
+BT /F1 7.5 Tf 48 258 Td (RF05 | Gestión de dispositivos | Administrador y técnico pueden crear y editar equipos. Solo) Tj ET
+BT /F1 7.5 Tf 48 248 Td (administrador puede eliminarlos.) Tj ET
+BT /F1 7.5 Tf 48 238 Td (RF06 | Gestión de servicios | Administrador y técnico pueden crear y editar trabajos. El técnico solo) Tj ET
+BT /F1 7.5 Tf 48 228 Td (modifica trabajos asignados a él.) Tj ET
+BT /F1 7.5 Tf 48 218 Td (RF07 | Gestión de usuarios | Solo administrador puede crear, listar, modificar, eliminar y resetear) Tj ET
+BT /F1 7.5 Tf 48 208 Td (contraseña de usuarios.) Tj ET
+BT /F1 7.5 Tf 48 198 Td (RF08 | Cambio de contraseña propia | Todo usuario autenticado puede cambiar su contraseña.) Tj ET
+BT /F1 7.5 Tf 48 188 Td (RF09 | Consulta de relaciones | El sistema muestra a qué cliente pertenece cada oficina y en qué oficina) Tj ET
+BT /F1 7.5 Tf 48 178 Td (está cada dispositivo.) Tj ET
+BT /F2 10.5 Tf 48 161 Td (Requerimientos no funcionales) Tj ET
+BT /F1 7.5 Tf 48 140 Td (Código | Requerimiento | Descripción) Tj ET
+BT /F1 7.5 Tf 48 130 Td (RNF01 | Seguridad | Uso de JWT para proteger rutas y bcrypt para guardar contraseñas hasheadas.) Tj ET
+BT /F1 7.5 Tf 48 120 Td (RNF02 | Mantenibilidad | Separación entre rutas, controladores, configuración y frontend por componentes.) Tj ET
+BT /F1 7.5 Tf 48 110 Td (RNF03 | Usabilidad | Interfaz con paneles separados por módulo y formularios controlados.) Tj ET
+BT /F1 7.5 Tf 48 100 Td (RNF04 | Persistencia | Base de datos MySQL/MariaDB ejecutada localmente con XAMPP.) Tj ET
+BT /F1 7.5 Tf 48 90 Td (RNF05 | Testeabilidad | Backend con Jest/Supertest y frontend con Vitest/Testing Library.) Tj ET
+0.70 0.78 0.85 RG 48 73 m 547 73 l S
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 4634 >>
+stream
+BT /F2 13 Tf 48 790 Td (2. Tecnologías utilizadas) Tj ET
+BT /F1 7.5 Tf 48 766 Td (Capa | Tecnología | Uso) Tj ET
+BT /F1 7.5 Tf 48 756 Td (Frontend | React | Construcción de interfaz mediante componentes.) Tj ET
+BT /F1 7.5 Tf 48 746 Td (Frontend | TypeScript | Tipado de props, estados y formularios.) Tj ET
+BT /F1 7.5 Tf 48 736 Td (Frontend | Vite | Servidor de desarrollo y build del frontend.) Tj ET
+BT /F1 7.5 Tf 48 726 Td (Frontend | React Router DOM | Navegación entre login y panel protegido.) Tj ET
+BT /F1 7.5 Tf 48 716 Td (Frontend | Axios | Comunicación HTTP con el backend.) Tj ET
+BT /F1 7.5 Tf 48 706 Td (Backend | Node.js | Entorno de ejecución JavaScript del servidor.) Tj ET
+BT /F1 7.5 Tf 48 696 Td (Backend | Express | Definición de servidor, rutas y middlewares.) Tj ET
+BT /F1 7.5 Tf 48 686 Td (Backend | MySQL2 | Conexión y consultas a MySQL/MariaDB.) Tj ET
+BT /F1 7.5 Tf 48 676 Td (Backend | bcryptjs | Hash y comparación de contraseñas.) Tj ET
+BT /F1 7.5 Tf 48 666 Td (Backend | jsonwebtoken | Generación y validación de tokens JWT.) Tj ET
+BT /F1 7.5 Tf 48 656 Td (Base de datos | MySQL/MariaDB | Persistencia de usuarios, clientes, oficinas, dispositivos y servicios.) Tj ET
+BT /F1 7.5 Tf 48 646 Td (Testing | Jest + Supertest | Pruebas de endpoints del backend.) Tj ET
+BT /F1 7.5 Tf 48 636 Td (Testing | Vitest + Testing Library | Pruebas de componentes del frontend.) Tj ET
+0.70 0.78 0.85 RG 48 619 m 547 619 l S
+BT /F2 13 Tf 48 602 Td (3. Análisis del sistema) Tj ET
+BT /F2 10.5 Tf 48 578 Td (Objetivo) Tj ET
+BT /F1 9 Tf 48 557 Td (Desarrollar una aplicación web que permita gestionar las operaciones básicas de un servicio) Tj ET
+BT /F1 9 Tf 48 545 Td (técnico: registrar clientes, oficinas, equipos, trabajos realizados y usuarios encargados.) Tj ET
+BT /F2 10.5 Tf 48 526 Td (Actores principales) Tj ET
+BT /F1 7.5 Tf 48 505 Td (Actor | Descripción) Tj ET
+BT /F1 7.5 Tf 48 495 Td (Administrador | Gestiona todos los módulos del sistema. Puede crear usuarios, clientes, oficinas,) Tj ET
+BT /F1 7.5 Tf 48 485 Td (dispositivos y servicios.) Tj ET
+BT /F1 7.5 Tf 48 475 Td (Técnico | Consulta clientes y oficinas, carga dispositivos, registra servicios y actualiza trabajos) Tj ET
+BT /F1 7.5 Tf 48 465 Td (asignados.) Tj ET
+BT /F1 7.5 Tf 48 455 Td (Cliente | Rol previsto en el modelo, con permisos limitados.) Tj ET
+BT /F2 10.5 Tf 48 438 Td (Flujo general) Tj ET
+BT /F1 9 Tf 48 417 Td (1. El usuario ingresa email y contraseña en el login.) Tj ET
+BT /F1 9 Tf 48 405 Td (2. El frontend envía POST /auth/login al backend.) Tj ET
+BT /F1 9 Tf 48 393 Td (3. El backend valida credenciales contra la base de datos.) Tj ET
+BT /F1 9 Tf 48 381 Td (4. Si son correctas, genera un token JWT.) Tj ET
+BT /F1 9 Tf 48 369 Td (5. El frontend guarda el token en AuthContext y localStorage.) Tj ET
+BT /F1 9 Tf 48 357 Td (6. Las siguientes peticiones envían el token en el header Authorization.) Tj ET
+BT /F1 9 Tf 48 345 Td (7. El backend valida el token y el rol antes de ejecutar cada operación.) Tj ET
+BT /F1 9 Tf 48 333 Td (8. Los controladores consultan MySQL y devuelven JSON.) Tj ET
+BT /F1 9 Tf 48 321 Td (9. React guarda la respuesta en estado y renderiza tarjetas/listas.) Tj ET
+0.70 0.78 0.85 RG 48 302 m 547 302 l S
+BT /F2 13 Tf 48 285 Td (4. Planificación) Tj ET
+BT /F2 10.5 Tf 48 261 Td (Diagrama Gantt) Tj ET
+BT /F2 8 Tf 48 240 Td ([Bloque mermaid]) Tj ET
+BT /F3 7.5 Tf 48 229 Td (gantt) Tj ET
+BT /F3 7.5 Tf 48 220 Td (title Planificación del TPI) Tj ET
+BT /F3 7.5 Tf 48 211 Td (dateFormat YYYY-MM-DD) Tj ET
+BT /F3 7.5 Tf 48 202 Td (section Análisis) Tj ET
+BT /F3 7.5 Tf 48 193 Td (Relevamiento de requerimientos :a1, 2026-06-01, 2d) Tj ET
+BT /F3 7.5 Tf 48 184 Td (Definición de roles y permisos :a2, after a1, 2d) Tj ET
+BT /F3 7.5 Tf 48 175 Td (section Diseño) Tj ET
+BT /F3 7.5 Tf 48 166 Td (Modelo de base de datos :b1, after a2, 2d) Tj ET
+BT /F3 7.5 Tf 48 157 Td (Diseño de interfaz :b2, after b1, 2d) Tj ET
+BT /F3 7.5 Tf 48 148 Td (section Desarrollo Backend) Tj ET
+BT /F3 7.5 Tf 48 139 Td (Configuración Express y MySQL :c1, after b2, 2d) Tj ET
+BT /F3 7.5 Tf 48 130 Td (Rutas y controladores CRUD :c2, after c1, 4d) Tj ET
+BT /F3 7.5 Tf 48 121 Td (Autenticación JWT y roles :c3, after c2, 2d) Tj ET
+BT /F3 7.5 Tf 48 112 Td (section Desarrollo Frontend) Tj ET
+BT /F3 7.5 Tf 48 103 Td (Estructura React y rutas :d1, after b2, 2d) Tj ET
+BT /F3 7.5 Tf 48 94 Td (Paneles y formularios controlados :d2, after d1, 5d) Tj ET
+BT /F3 7.5 Tf 48 85 Td (Integración Axios :d3, after d2, 2d) Tj ET
+BT /F3 7.5 Tf 48 76 Td (section Testing y Documentación) Tj ET
+BT /F3 7.5 Tf 48 67 Td (Pruebas funcionales :e1, after c3, 2d) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 4517 >>
+stream
+BT /F3 7.5 Tf 48 790 Td (Comentarios e informe técnico :e2, after e1, 3d) Tj ET
+BT /F2 10.5 Tf 48 774 Td (Diagrama PERT) Tj ET
+BT /F2 8 Tf 48 753 Td ([Bloque mermaid]) Tj ET
+BT /F3 7.5 Tf 48 742 Td (flowchart LR) Tj ET
+BT /F3 7.5 Tf 48 733 Td (A["Requerimientos"] --> B["Modelo de datos"]) Tj ET
+BT /F3 7.5 Tf 48 724 Td (A --> C["Diseño de interfaz"]) Tj ET
+BT /F3 7.5 Tf 48 715 Td (B --> D["Backend Express"]) Tj ET
+BT /F3 7.5 Tf 48 706 Td (D --> E["Rutas y controladores"]) Tj ET
+BT /F3 7.5 Tf 48 697 Td (E --> F["Autenticación y roles"]) Tj ET
+BT /F3 7.5 Tf 48 688 Td (C --> G["Frontend React"]) Tj ET
+BT /F3 7.5 Tf 48 679 Td (G --> H["Formularios controlados"]) Tj ET
+BT /F3 7.5 Tf 48 670 Td (F --> I["Integración Axios"]) Tj ET
+BT /F3 7.5 Tf 48 661 Td (H --> I) Tj ET
+BT /F3 7.5 Tf 48 652 Td (I --> J["Testing"]) Tj ET
+BT /F3 7.5 Tf 48 643 Td (J --> K["Documentación e informe"]) Tj ET
+0.70 0.78 0.85 RG 48 627 m 547 627 l S
+BT /F2 13 Tf 48 610 Td (5. Tabla de riesgos) Tj ET
+BT /F1 7.5 Tf 48 586 Td (Riesgo | Probabilidad | Impacto | Medida preventiva | Plan de contingencia) Tj ET
+BT /F1 7.5 Tf 48 576 Td (Errores de conexión con MySQL/XAMPP | Media | Alto | Documentar `.env` y script SQL. | Verificar servicio) Tj ET
+BT /F1 7.5 Tf 48 566 Td (MySQL y credenciales.) Tj ET
+BT /F1 7.5 Tf 48 556 Td (Permisos incorrectos por rol | Media | Alto | Centralizar validación con middlewares. | Probar endpoints) Tj ET
+BT /F1 7.5 Tf 48 546 Td (con admin y técnico.) Tj ET
+BT /F1 7.5 Tf 48 536 Td (Formularios con datos incompletos | Media | Medio | Usar inputs `required` y validaciones backend. |) Tj ET
+BT /F1 7.5 Tf 48 526 Td (Mostrar mensajes de error.) Tj ET
+BT /F1 7.5 Tf 48 516 Td (Pérdida de datos por eliminación | Baja | Alto | Restringir DELETE a administrador. | Confirmaciones) Tj ET
+BT /F1 7.5 Tf 48 506 Td (antes de eliminar.) Tj ET
+BT /F1 7.5 Tf 48 496 Td (Problemas de codificación con ñ/acentos | Media | Medio | Usar UTF-8 y revisar textos. | Normalizar) Tj ET
+BT /F1 7.5 Tf 48 486 Td (nombres y probar login/password.) Tj ET
+BT /F1 7.5 Tf 48 476 Td (Cambios que rompan funcionalidades | Media | Alto | Ejecutar tests backend/frontend. | Revertir o) Tj ET
+BT /F1 7.5 Tf 48 466 Td (corregir el módulo afectado.) Tj ET
+0.70 0.78 0.85 RG 48 449 m 547 449 l S
+BT /F2 13 Tf 48 432 Td (6. Asignación de tareas y roles) Tj ET
+BT /F2 10.5 Tf 48 408 Td (Roles del equipo de desarrollo) Tj ET
+BT /F1 7.5 Tf 48 387 Td (Rol | Responsabilidades) Tj ET
+BT /F1 7.5 Tf 48 377 Td (Analista | Relevar requerimientos y definir alcance.) Tj ET
+BT /F1 7.5 Tf 48 367 Td (Diseñador de BD | Diseñar entidades, claves primarias y foráneas.) Tj ET
+BT /F1 7.5 Tf 48 357 Td (Desarrollador backend | Implementar Express, rutas, controladores, seguridad y conexión MySQL.) Tj ET
+BT /F1 7.5 Tf 48 347 Td (Desarrollador frontend | Implementar componentes React, formularios, paneles y navegación.) Tj ET
+BT /F1 7.5 Tf 48 337 Td (Tester | Probar CRUD, login, permisos y flujo completo.) Tj ET
+BT /F1 7.5 Tf 48 327 Td (Documentador | Elaborar informe, diagramas y comentarios explicativos.) Tj ET
+BT /F2 10.5 Tf 48 310 Td (Tareas del proyecto) Tj ET
+BT /F1 7.5 Tf 48 289 Td (Tarea | Responsable | Resultado) Tj ET
+BT /F1 7.5 Tf 48 279 Td (Relevamiento | Analista | Lista de requerimientos.) Tj ET
+BT /F1 7.5 Tf 48 269 Td (Diseño de BD | Diseñador BD | Script `schema.sql` y modelo relacional.) Tj ET
+BT /F1 7.5 Tf 48 259 Td (Backend | Desarrollador backend | API REST con Express.) Tj ET
+BT /F1 7.5 Tf 48 249 Td (Frontend | Desarrollador frontend | Aplicación React con paneles.) Tj ET
+BT /F1 7.5 Tf 48 239 Td (Seguridad | Backend | JWT, bcrypt y roles.) Tj ET
+BT /F1 7.5 Tf 48 229 Td (Testing | Tester | Pruebas automáticas y manuales.) Tj ET
+BT /F1 7.5 Tf 48 219 Td (Documentación | Documentador | Informe final y comentarios en código.) Tj ET
+0.70 0.78 0.85 RG 48 202 m 547 202 l S
+BT /F2 13 Tf 48 185 Td (7. Diseño de base de datos) Tj ET
+BT /F2 10.5 Tf 48 161 Td (Entidades principales) Tj ET
+BT /F1 7.5 Tf 48 140 Td (Tabla | Descripción) Tj ET
+BT /F1 7.5 Tf 48 130 Td (`usuarios` | Usuarios del sistema con rol y contraseña hasheada.) Tj ET
+BT /F1 7.5 Tf 48 120 Td (`clientes` | Clientes del servicio técnico.) Tj ET
+BT /F1 7.5 Tf 48 110 Td (`oficinas` | Oficinas pertenecientes a clientes.) Tj ET
+BT /F1 7.5 Tf 48 100 Td (`dispositivos` | Equipos ubicados en oficinas.) Tj ET
+BT /F1 7.5 Tf 48 90 Td (`servicios` | Trabajos técnicos realizados sobre dispositivos por usuarios.) Tj ET
+BT /F2 10.5 Tf 48 73 Td (Diagrama E-R) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 3265 >>
+stream
+BT /F2 8 Tf 48 790 Td ([Bloque mermaid]) Tj ET
+BT /F3 7.5 Tf 48 779 Td (erDiagram) Tj ET
+BT /F3 7.5 Tf 48 770 Td (CLIENTES ||--o{ OFICINAS : tiene) Tj ET
+BT /F3 7.5 Tf 48 761 Td (OFICINAS ||--o{ DISPOSITIVOS : contiene) Tj ET
+BT /F3 7.5 Tf 48 752 Td (DISPOSITIVOS ||--o{ SERVICIOS : recibe) Tj ET
+BT /F3 7.5 Tf 48 743 Td (USUARIOS ||--o{ SERVICIOS : realiza) Tj ET
+BT /F3 7.5 Tf 48 725 Td (CLIENTES {) Tj ET
+BT /F3 7.5 Tf 48 716 Td (int id_cliente PK) Tj ET
+BT /F3 7.5 Tf 48 707 Td (string nombre) Tj ET
+BT /F3 7.5 Tf 48 698 Td (string cuit) Tj ET
+BT /F3 7.5 Tf 48 689 Td (string contacto) Tj ET
+BT /F3 7.5 Tf 48 680 Td (string email) Tj ET
+BT /F3 7.5 Tf 48 671 Td (}) Tj ET
+BT /F3 7.5 Tf 48 653 Td (OFICINAS {) Tj ET
+BT /F3 7.5 Tf 48 644 Td (int id_oficina PK) Tj ET
+BT /F3 7.5 Tf 48 635 Td (int id_cliente FK) Tj ET
+BT /F3 7.5 Tf 48 626 Td (string direccion) Tj ET
+BT /F3 7.5 Tf 48 617 Td (string ciudad) Tj ET
+BT /F3 7.5 Tf 48 608 Td (}) Tj ET
+BT /F3 7.5 Tf 48 590 Td (DISPOSITIVOS {) Tj ET
+BT /F3 7.5 Tf 48 581 Td (int id_dispositivo PK) Tj ET
+BT /F3 7.5 Tf 48 572 Td (int id_oficina FK) Tj ET
+BT /F3 7.5 Tf 48 563 Td (string tipo) Tj ET
+BT /F3 7.5 Tf 48 554 Td (string marca) Tj ET
+BT /F3 7.5 Tf 48 545 Td (string modelo) Tj ET
+BT /F3 7.5 Tf 48 536 Td (enum estado) Tj ET
+BT /F3 7.5 Tf 48 527 Td (}) Tj ET
+BT /F3 7.5 Tf 48 509 Td (SERVICIOS {) Tj ET
+BT /F3 7.5 Tf 48 500 Td (int id_servicio PK) Tj ET
+BT /F3 7.5 Tf 48 491 Td (int id_dispositivo FK) Tj ET
+BT /F3 7.5 Tf 48 482 Td (int id_usuario FK) Tj ET
+BT /F3 7.5 Tf 48 473 Td (date fecha) Tj ET
+BT /F3 7.5 Tf 48 464 Td (enum tipo) Tj ET
+BT /F3 7.5 Tf 48 455 Td (text descripcion) Tj ET
+BT /F3 7.5 Tf 48 446 Td (enum estado) Tj ET
+BT /F3 7.5 Tf 48 437 Td (}) Tj ET
+BT /F3 7.5 Tf 48 419 Td (USUARIOS {) Tj ET
+BT /F3 7.5 Tf 48 410 Td (int id_usuario PK) Tj ET
+BT /F3 7.5 Tf 48 401 Td (string nombre) Tj ET
+BT /F3 7.5 Tf 48 392 Td (string email) Tj ET
+BT /F3 7.5 Tf 48 383 Td (string contraseña) Tj ET
+BT /F3 7.5 Tf 48 374 Td (enum rol) Tj ET
+BT /F3 7.5 Tf 48 365 Td (}) Tj ET
+BT /F2 10.5 Tf 48 349 Td (Modelado relacional) Tj ET
+BT /F2 8 Tf 48 328 Td ([Bloque txt]) Tj ET
+BT /F3 7.5 Tf 48 317 Td (usuarios\() Tj ET
+BT /F3 7.5 Tf 48 308 Td (id_usuario PK,) Tj ET
+BT /F3 7.5 Tf 48 299 Td (nombre,) Tj ET
+BT /F3 7.5 Tf 48 290 Td (email UNIQUE,) Tj ET
+BT /F3 7.5 Tf 48 281 Td (contraseña,) Tj ET
+BT /F3 7.5 Tf 48 272 Td (rol) Tj ET
+BT /F3 7.5 Tf 48 263 Td (\)) Tj ET
+BT /F3 7.5 Tf 48 245 Td (clientes\() Tj ET
+BT /F3 7.5 Tf 48 236 Td (id_cliente PK,) Tj ET
+BT /F3 7.5 Tf 48 227 Td (nombre,) Tj ET
+BT /F3 7.5 Tf 48 218 Td (cuit UNIQUE,) Tj ET
+BT /F3 7.5 Tf 48 209 Td (contacto,) Tj ET
+BT /F3 7.5 Tf 48 200 Td (email) Tj ET
+BT /F3 7.5 Tf 48 191 Td (\)) Tj ET
+BT /F3 7.5 Tf 48 173 Td (oficinas\() Tj ET
+BT /F3 7.5 Tf 48 164 Td (id_oficina PK,) Tj ET
+BT /F3 7.5 Tf 48 155 Td (id_cliente FK -> clientes.id_cliente,) Tj ET
+BT /F3 7.5 Tf 48 146 Td (direccion,) Tj ET
+BT /F3 7.5 Tf 48 137 Td (ciudad) Tj ET
+BT /F3 7.5 Tf 48 128 Td (\)) Tj ET
+BT /F3 7.5 Tf 48 110 Td (dispositivos\() Tj ET
+BT /F3 7.5 Tf 48 101 Td (id_dispositivo PK,) Tj ET
+BT /F3 7.5 Tf 48 92 Td (id_oficina FK -> oficinas.id_oficina,) Tj ET
+BT /F3 7.5 Tf 48 83 Td (tipo,) Tj ET
+BT /F3 7.5 Tf 48 74 Td (marca,) Tj ET
+BT /F3 7.5 Tf 48 65 Td (modelo,) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 3694 >>
+stream
+BT /F3 7.5 Tf 48 790 Td (estado) Tj ET
+BT /F3 7.5 Tf 48 781 Td (\)) Tj ET
+BT /F3 7.5 Tf 48 763 Td (servicios\() Tj ET
+BT /F3 7.5 Tf 48 754 Td (id_servicio PK,) Tj ET
+BT /F3 7.5 Tf 48 745 Td (id_dispositivo FK -> dispositivos.id_dispositivo,) Tj ET
+BT /F3 7.5 Tf 48 736 Td (id_usuario FK -> usuarios.id_usuario,) Tj ET
+BT /F3 7.5 Tf 48 727 Td (fecha,) Tj ET
+BT /F3 7.5 Tf 48 718 Td (tipo,) Tj ET
+BT /F3 7.5 Tf 48 709 Td (descripcion,) Tj ET
+BT /F3 7.5 Tf 48 700 Td (estado) Tj ET
+BT /F3 7.5 Tf 48 691 Td (\)) Tj ET
+BT /F2 10.5 Tf 48 675 Td (Normalización) Tj ET
+BT /F1 9 Tf 48 654 Td (La base está separada por entidades para evitar redundancia:) Tj ET
+BT /F1 9 Tf 48 635 Td (- Los datos del cliente se guardan una sola vez en clientes.) Tj ET
+BT /F1 9 Tf 48 623 Td (- Cada oficina referencia a un cliente mediante id_cliente.) Tj ET
+BT /F1 9 Tf 48 611 Td (- Cada dispositivo referencia a una oficina mediante id_oficina.) Tj ET
+BT /F1 9 Tf 48 599 Td (- Cada servicio referencia a un dispositivo y a un usuario técnico.) Tj ET
+BT /F1 9 Tf 48 580 Td (Esto permite mantener integridad referencial mediante claves foráneas.) Tj ET
+0.70 0.78 0.85 RG 48 561 m 547 561 l S
+BT /F2 13 Tf 48 544 Td (8. Diseño de interfaz) Tj ET
+BT /F2 10.5 Tf 48 520 Td (Vistas principales) Tj ET
+BT /F1 7.5 Tf 48 499 Td (Vista | Descripción) Tj ET
+BT /F1 7.5 Tf 48 489 Td (Login | Formulario para iniciar sesión.) Tj ET
+BT /F1 7.5 Tf 48 479 Td (Panel | Vista principal posterior al login.) Tj ET
+BT /F1 7.5 Tf 48 469 Td (Clientes | Lista clientes y permite CRUD según rol.) Tj ET
+BT /F1 7.5 Tf 48 459 Td (Oficinas | Lista oficinas y muestra cliente asociado.) Tj ET
+BT /F1 7.5 Tf 48 449 Td (Dispositivos | Lista equipos, ubicación y condición.) Tj ET
+BT /F1 7.5 Tf 48 439 Td (Servicios | Lista trabajos técnicos y permite cambiar estado.) Tj ET
+BT /F1 7.5 Tf 48 429 Td (Usuarios | Administración de usuarios.) Tj ET
+BT /F1 7.5 Tf 48 419 Td (Cambiar contraseña | Formulario para actualizar contraseña propia.) Tj ET
+BT /F2 10.5 Tf 48 402 Td (Interfaz y navegación) Tj ET
+BT /F2 8 Tf 48 381 Td ([Bloque mermaid]) Tj ET
+BT /F3 7.5 Tf 48 370 Td (flowchart TD) Tj ET
+BT /F3 7.5 Tf 48 361 Td (A["Login"] -->|credenciales correctas| B["Panel"]) Tj ET
+BT /F3 7.5 Tf 48 352 Td (B --> C["Clientes"]) Tj ET
+BT /F3 7.5 Tf 48 343 Td (B --> D["Oficinas"]) Tj ET
+BT /F3 7.5 Tf 48 334 Td (B --> E["Dispositivos"]) Tj ET
+BT /F3 7.5 Tf 48 325 Td (B --> F["Servicios"]) Tj ET
+BT /F3 7.5 Tf 48 316 Td (B --> G["Usuarios"]) Tj ET
+BT /F3 7.5 Tf 48 307 Td (B --> H["Cambiar contraseña"]) Tj ET
+BT /F3 7.5 Tf 48 298 Td (B -->|Cerrar sesión| A) Tj ET
+0.70 0.78 0.85 RG 48 282 m 547 282 l S
+BT /F2 13 Tf 48 265 Td (9. API del backend) Tj ET
+BT /F2 10.5 Tf 48 241 Td (Autenticación) Tj ET
+BT /F1 7.5 Tf 48 220 Td (Método | Ruta | Descripción) Tj ET
+BT /F1 7.5 Tf 48 210 Td (POST | `/auth/login` | Valida credenciales y devuelve token JWT.) Tj ET
+BT /F2 10.5 Tf 48 193 Td (Clientes) Tj ET
+BT /F1 7.5 Tf 48 172 Td (Método | Ruta | Rol | Descripción) Tj ET
+BT /F1 7.5 Tf 48 162 Td (GET | `/clientes` | admin, tecnico | Lista clientes.) Tj ET
+BT /F1 7.5 Tf 48 152 Td (POST | `/clientes` | admin | Crea cliente.) Tj ET
+BT /F1 7.5 Tf 48 142 Td (PUT | `/clientes/:id` | admin | Modifica cliente.) Tj ET
+BT /F1 7.5 Tf 48 132 Td (DELETE | `/clientes/:id` | admin | Elimina cliente.) Tj ET
+BT /F2 10.5 Tf 48 115 Td (Oficinas) Tj ET
+BT /F1 7.5 Tf 48 94 Td (Método | Ruta | Rol | Descripción) Tj ET
+BT /F1 7.5 Tf 48 84 Td (GET | `/oficinas` | admin, tecnico | Lista oficinas con cliente asociado.) Tj ET
+BT /F1 7.5 Tf 48 74 Td (POST | `/oficinas` | admin | Crea oficina.) Tj ET
+BT /F1 7.5 Tf 48 64 Td (PUT | `/oficinas/:id` | admin | Modifica oficina.) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 14 0 R >>
+endobj
+16 0 obj
+<< /Length 5017 >>
+stream
+BT /F1 7.5 Tf 48 790 Td (DELETE | `/oficinas/:id` | admin | Elimina oficina.) Tj ET
+BT /F2 10.5 Tf 48 773 Td (Dispositivos) Tj ET
+BT /F1 7.5 Tf 48 752 Td (Método | Ruta | Rol | Descripción) Tj ET
+BT /F1 7.5 Tf 48 742 Td (GET | `/dispositivos` | admin, tecnico | Lista equipos con oficina y cliente.) Tj ET
+BT /F1 7.5 Tf 48 732 Td (POST | `/dispositivos` | admin, tecnico | Crea equipo.) Tj ET
+BT /F1 7.5 Tf 48 722 Td (PUT | `/dispositivos/:id` | admin, tecnico | Modifica equipo.) Tj ET
+BT /F1 7.5 Tf 48 712 Td (DELETE | `/dispositivos/:id` | admin | Elimina equipo.) Tj ET
+BT /F2 10.5 Tf 48 695 Td (Servicios) Tj ET
+BT /F1 7.5 Tf 48 674 Td (Método | Ruta | Rol | Descripción) Tj ET
+BT /F1 7.5 Tf 48 664 Td (GET | `/servicios` | admin, tecnico | Admin ve todos; técnico ve asignados.) Tj ET
+BT /F1 7.5 Tf 48 654 Td (POST | `/servicios` | admin, tecnico | Crea trabajo.) Tj ET
+BT /F1 7.5 Tf 48 644 Td (PUT | `/servicios/:id` | admin, tecnico | Modifica trabajo. Técnico solo si está asignado.) Tj ET
+BT /F1 7.5 Tf 48 634 Td (DELETE | `/servicios/:id` | admin | Elimina trabajo.) Tj ET
+BT /F2 10.5 Tf 48 617 Td (Usuarios) Tj ET
+BT /F1 7.5 Tf 48 596 Td (Método | Ruta | Rol | Descripción) Tj ET
+BT /F1 7.5 Tf 48 586 Td (GET | `/usuarios` | admin | Lista usuarios.) Tj ET
+BT /F1 7.5 Tf 48 576 Td (POST | `/usuarios` | admin | Crea usuario.) Tj ET
+BT /F1 7.5 Tf 48 566 Td (PUT | `/usuarios/:id` | admin | Modifica usuario.) Tj ET
+BT /F1 7.5 Tf 48 556 Td (PUT | `/usuarios/:id/password` | admin | Resetea contraseña de otro usuario.) Tj ET
+BT /F1 7.5 Tf 48 546 Td (DELETE | `/usuarios/:id` | admin | Elimina usuario.) Tj ET
+BT /F1 7.5 Tf 48 536 Td (PUT | `/usuarios/password` | autenticado | Cambia contraseña propia.) Tj ET
+0.70 0.78 0.85 RG 48 519 m 547 519 l S
+BT /F2 13 Tf 48 502 Td (10. Componentes del frontend) Tj ET
+BT /F1 7.5 Tf 48 478 Td (Componente | Descripción | Estado propio | Props relevantes) Tj ET
+BT /F1 7.5 Tf 48 468 Td (`App` | Define rutas y proveedores globales. | No | No) Tj ET
+BT /F1 7.5 Tf 48 458 Td (`AuthProvider` | Maneja sesión global. | `token`, `usuario` | `children`) Tj ET
+BT /F1 7.5 Tf 48 448 Td (`RutaPrivada` | Protege rutas según token. | No | `children`) Tj ET
+BT /F1 7.5 Tf 48 438 Td (`Login` | Formulario de inicio de sesión. | `email`, `contraseña`, `error` | No) Tj ET
+BT /F1 7.5 Tf 48 428 Td (`Panel` | Menú principal y renderizado condicional. | `vista` | No) Tj ET
+BT /F1 7.5 Tf 48 418 Td (`ClientesPanel` | Lista y CRUD de clientes. | `clientes`, `mostrarModal`, `clienteSeleccionado` | No) Tj ET
+BT /F1 7.5 Tf 48 408 Td (`FormularioCliente` | Formulario controlado de cliente. | `form` | `clienteInicial`, `onGuardar`,) Tj ET
+BT /F1 7.5 Tf 48 398 Td (`onCancelar`) Tj ET
+BT /F1 7.5 Tf 48 388 Td (`OficinasPanel` | Lista oficinas y clientes asociados. | `oficinas`, `clientes`, `mostrarModal`,) Tj ET
+BT /F1 7.5 Tf 48 378 Td (`oficinaSeleccionada` | No) Tj ET
+BT /F1 7.5 Tf 48 368 Td (`FormularioOficina` | Formulario controlado de oficina. | `form` | `oficinaInicial`, `clientes`,) Tj ET
+BT /F1 7.5 Tf 48 358 Td (`onGuardar`, `onCancelar`) Tj ET
+BT /F1 7.5 Tf 48 348 Td (`DispositivosPanel` | Lista equipos y ubicación. | `dispositivos`, `oficinas`, `mostrarModal`,) Tj ET
+BT /F1 7.5 Tf 48 338 Td (`dispositivoSeleccionado` | No) Tj ET
+BT /F1 7.5 Tf 48 328 Td (`FormularioDispositivo` | Formulario controlado de equipo. | `form` | `dispositivoInicial`, `oficinas`,) Tj ET
+BT /F1 7.5 Tf 48 318 Td (`onGuardar`, `onCancelar`) Tj ET
+BT /F1 7.5 Tf 48 308 Td (`ServiciosPanel` | Lista trabajos y permite edición. | `servicios`, `dispositivos`, `usuarios`,) Tj ET
+BT /F1 7.5 Tf 48 298 Td (`mostrarModal`, `servicioSeleccionado` | No) Tj ET
+BT /F1 7.5 Tf 48 288 Td (`FormularioServicio` | Formulario controlado de servicio. | `form` | `servicioInicial`, `dispositivos`,) Tj ET
+BT /F1 7.5 Tf 48 278 Td (`usuarios`, `onGuardar`, `onCancelar`) Tj ET
+BT /F1 7.5 Tf 48 268 Td (`UsuariosPanel` | Administración de usuarios. | `usuarios`, `mostrarModal`, `usuarioSeleccionado` | No) Tj ET
+BT /F1 7.5 Tf 48 258 Td (`FormularioUsuario` | Formulario controlado de usuario. | `form` | `usuarioInicial`, `onGuardar`,) Tj ET
+BT /F1 7.5 Tf 48 248 Td (`onCancelar`) Tj ET
+BT /F1 7.5 Tf 48 238 Td (`CambiarContraseña` | Cambio de contraseña propia. | `contraseñaActual`, `nuevaContraseña`, `mensaje` |) Tj ET
+BT /F1 7.5 Tf 48 228 Td (No) Tj ET
+BT /F2 10.5 Tf 48 211 Td (Ciclo de vida de componentes) Tj ET
+BT /F1 9 Tf 48 190 Td (Los paneles usan useEffect para cargar datos al montarse:) Tj ET
+BT /F2 8 Tf 48 171 Td ([Bloque tsx]) Tj ET
+BT /F3 7.5 Tf 48 160 Td (useEffect\(\(\) => {) Tj ET
+BT /F3 7.5 Tf 48 151 Td (cargarDatos\(\);) Tj ET
+BT /F3 7.5 Tf 48 142 Td (}, [token]\);) Tj ET
+BT /F1 9 Tf 48 126 Td (Esto significa:) Tj ET
+BT /F1 9 Tf 48 107 Td (1. El componente se renderiza por primera vez.) Tj ET
+BT /F1 9 Tf 48 95 Td (2. React ejecuta useEffect.) Tj ET
+BT /F1 9 Tf 48 83 Td (3. Se llama al backend con Axios.) Tj ET
+BT /F1 9 Tf 48 71 Td (4. La respuesta se guarda con setEstado.) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 16 0 R >>
+endobj
+18 0 obj
+<< /Length 3512 >>
+stream
+BT /F1 9 Tf 48 790 Td (5. React vuelve a renderizar con los datos actualizados.) Tj ET
+0.70 0.78 0.85 RG 48 771 m 547 771 l S
+BT /F2 13 Tf 48 754 Td (11. Código y flujo de información) Tj ET
+BT /F2 10.5 Tf 48 730 Td (Flujo login) Tj ET
+BT /F1 9 Tf 48 709 Td (Frontend:) Tj ET
+BT /F2 8 Tf 48 690 Td ([Bloque tsx]) Tj ET
+BT /F3 7.5 Tf 48 679 Td (const res = await axios.post\('http://localhost:3000/auth/login', {) Tj ET
+BT /F3 7.5 Tf 48 670 Td (email,) Tj ET
+BT /F3 7.5 Tf 48 661 Td (contraseña,) Tj ET
+BT /F3 7.5 Tf 48 652 Td (}\);) Tj ET
+BT /F3 7.5 Tf 48 634 Td (login\(res.data.token, res.data.usuario\);) Tj ET
+BT /F3 7.5 Tf 48 625 Td (navigate\('/panel'\);) Tj ET
+BT /F1 9 Tf 48 609 Td (Backend:) Tj ET
+BT /F2 8 Tf 48 590 Td ([Bloque js]) Tj ET
+BT /F3 7.5 Tf 48 579 Td (const sql = 'SELECT * FROM usuarios WHERE email = ?';) Tj ET
+BT /F3 7.5 Tf 48 570 Td (db.query\(sql, [email], async \(err, resultados\) => {) Tj ET
+BT /F3 7.5 Tf 48 561 Td (const contraseñaValida = await bcrypt.compare\(contraseña, usuario.contraseña\);) Tj ET
+BT /F3 7.5 Tf 48 552 Td (const token = jwt.sign\({ id: usuario.id_usuario, rol: usuario.rol }, process.env.JWT_SECRET\);) Tj ET
+BT /F3 7.5 Tf 48 543 Td (res.json\({ token, usuario }\);) Tj ET
+BT /F3 7.5 Tf 48 534 Td (}\);) Tj ET
+BT /F1 9 Tf 48 518 Td (Explicación:) Tj ET
+BT /F1 9 Tf 48 499 Td (1. React captura datos desde inputs controlados.) Tj ET
+BT /F1 9 Tf 48 487 Td (2. Axios envía los datos al backend.) Tj ET
+BT /F1 9 Tf 48 475 Td (3. Express recibe la request en /auth/login.) Tj ET
+BT /F1 9 Tf 48 463 Td (4. El controlador consulta MySQL.) Tj ET
+BT /F1 9 Tf 48 451 Td (5. bcrypt compara la contraseña.) Tj ET
+BT /F1 9 Tf 48 439 Td (6. JWT genera un token.) Tj ET
+BT /F1 9 Tf 48 427 Td (7. El backend responde JSON.) Tj ET
+BT /F1 9 Tf 48 415 Td (8. React guarda sesión y navega al panel.) Tj ET
+BT /F2 10.5 Tf 48 396 Td (Flujo de alta de dispositivo) Tj ET
+BT /F1 9 Tf 48 375 Td (Frontend:) Tj ET
+BT /F2 8 Tf 48 356 Td ([Bloque tsx]) Tj ET
+BT /F3 7.5 Tf 48 345 Td (await axios.post\('http://localhost:3000/dispositivos', form, {) Tj ET
+BT /F3 7.5 Tf 48 336 Td (headers: { Authorization: `Bearer ${token}` },) Tj ET
+BT /F3 7.5 Tf 48 327 Td (}\);) Tj ET
+BT /F1 9 Tf 48 311 Td (Backend:) Tj ET
+BT /F2 8 Tf 48 292 Td ([Bloque js]) Tj ET
+BT /F3 7.5 Tf 48 281 Td (const { id_oficina, tipo, marca, modelo, estado } = req.body;) Tj ET
+BT /F3 7.5 Tf 48 272 Td (const sql = 'INSERT INTO dispositivos \(id_oficina, tipo, marca, modelo, estado\) VALUES \(?, ?, ?,) Tj ET
+BT /F3 7.5 Tf 48 263 Td (?, ?\)';) Tj ET
+BT /F3 7.5 Tf 48 254 Td (db.query\(sql, [id_oficina, tipo, marca, modelo, estado], \(err, resultado\) => {) Tj ET
+BT /F3 7.5 Tf 48 245 Td (res.status\(201\).json\({ mensaje: 'Dispositivo creado', id: resultado.insertId }\);) Tj ET
+BT /F3 7.5 Tf 48 236 Td (}\);) Tj ET
+BT /F1 9 Tf 48 220 Td (Explicación:) Tj ET
+BT /F1 9 Tf 48 201 Td (1. FormularioDispositivo mantiene el estado form.) Tj ET
+BT /F1 9 Tf 48 189 Td (2. Al enviar, llama onGuardar\(form\).) Tj ET
+BT /F1 9 Tf 48 177 Td (3. DispositivosPanel recibe ese objeto y ejecuta Axios.) Tj ET
+BT /F1 9 Tf 48 165 Td (4. El backend valida JWT y rol.) Tj ET
+BT /F1 9 Tf 48 153 Td (5. El controlador lee req.body.) Tj ET
+BT /F1 9 Tf 48 141 Td (6. MySQL inserta el registro.) Tj ET
+BT /F1 9 Tf 48 129 Td (7. El backend devuelve el id creado.) Tj ET
+BT /F1 9 Tf 48 117 Td (8. El frontend recarga la lista con cargarDatos\(\).) Tj ET
+BT /F2 10.5 Tf 48 98 Td (Flujo de listado) Tj ET
+BT /F1 9 Tf 48 77 Td (Frontend:) Tj ET
+endstream
+endobj
+19 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 18 0 R >>
+endobj
+20 0 obj
+<< /Length 2761 >>
+stream
+BT /F2 8 Tf 48 790 Td ([Bloque tsx]) Tj ET
+BT /F3 7.5 Tf 48 779 Td (const res = await axios.get\('http://localhost:3000/dispositivos', {) Tj ET
+BT /F3 7.5 Tf 48 770 Td (headers: { Authorization: `Bearer ${token}` },) Tj ET
+BT /F3 7.5 Tf 48 761 Td (}\);) Tj ET
+BT /F3 7.5 Tf 48 752 Td (setDispositivos\(res.data\);) Tj ET
+BT /F1 9 Tf 48 736 Td (Backend:) Tj ET
+BT /F2 8 Tf 48 717 Td ([Bloque js]) Tj ET
+BT /F3 7.5 Tf 48 706 Td (const sql = `) Tj ET
+BT /F3 7.5 Tf 48 697 Td (SELECT d.*, o.direccion AS oficina_direccion, c.nombre AS cliente_nombre) Tj ET
+BT /F3 7.5 Tf 48 688 Td (FROM dispositivos d) Tj ET
+BT /F3 7.5 Tf 48 679 Td (JOIN oficinas o ON o.id_oficina = d.id_oficina) Tj ET
+BT /F3 7.5 Tf 48 670 Td (JOIN clientes c ON c.id_cliente = o.id_cliente) Tj ET
+BT /F3 7.5 Tf 48 661 Td (`;) Tj ET
+BT /F3 7.5 Tf 48 652 Td (db.query\(sql, \(err, resultados\) => {) Tj ET
+BT /F3 7.5 Tf 48 643 Td (res.json\(resultados\);) Tj ET
+BT /F3 7.5 Tf 48 634 Td (}\);) Tj ET
+BT /F1 9 Tf 48 618 Td (Renderizado:) Tj ET
+BT /F2 8 Tf 48 599 Td ([Bloque tsx]) Tj ET
+BT /F3 7.5 Tf 48 588 Td ({dispositivos.map\(\(disp\) => \() Tj ET
+BT /F3 7.5 Tf 48 579 Td (<div key={disp.id_dispositivo} className="card">) Tj ET
+BT /F3 7.5 Tf 48 570 Td (<h3>{disp.tipo} - {disp.marca} {disp.modelo}</h3>) Tj ET
+BT /F3 7.5 Tf 48 561 Td (</div>) Tj ET
+BT /F3 7.5 Tf 48 552 Td (\)\)}) Tj ET
+BT /F1 9 Tf 48 536 Td (Explicación:) Tj ET
+BT /F1 9 Tf 48 517 Td (- GET pide datos.) Tj ET
+BT /F1 9 Tf 48 505 Td (- MySQL devuelve un arreglo.) Tj ET
+BT /F1 9 Tf 48 493 Td (- res.json\(resultados\) envía ese arreglo al frontend.) Tj ET
+BT /F1 9 Tf 48 481 Td (- setDispositivos actualiza el estado.) Tj ET
+BT /F1 9 Tf 48 469 Td (- map\(\) transforma cada objeto en una tarjeta.) Tj ET
+BT /F1 9 Tf 48 457 Td (- key ayuda a React a identificar cada elemento.) Tj ET
+0.70 0.78 0.85 RG 48 438 m 547 438 l S
+BT /F2 13 Tf 48 421 Td (12. Conclusión) Tj ET
+BT /F1 9 Tf 48 397 Td (El proyecto implementa una aplicación full stack funcional con separación clara entre) Tj ET
+BT /F1 9 Tf 48 385 Td (frontend, backend y base de datos. React se encarga de la interfaz mediante componentes,) Tj ET
+BT /F1 9 Tf 48 373 Td (estados, props y formularios controlados. Express organiza la API en rutas, middlewares y) Tj ET
+BT /F1 9 Tf 48 361 Td (controladores. MySQL almacena los datos relacionales y mantiene integridad mediante claves) Tj ET
+BT /F1 9 Tf 48 349 Td (primarias y foráneas.) Tj ET
+BT /F1 9 Tf 48 330 Td (El flujo completo permite explicar cómo un dato ingresado por el usuario viaja desde un) Tj ET
+BT /F1 9 Tf 48 318 Td (formulario React hacia el backend, se procesa en Express, se guarda o consulta en MySQL y) Tj ET
+BT /F1 9 Tf 48 306 Td (vuelve al frontend como JSON para ser renderizado en pantalla.) Tj ET
+endstream
+endobj
+21 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 20 0 R >>
+endobj
+xref
+0 22
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000169 00000 n 
+0000000239 00000 n 
+0000000314 00000 n 
+0000000382 00000 n 
+0000004581 00000 n 
+0000004727 00000 n 
+0000009413 00000 n 
+0000009559 00000 n 
+0000014129 00000 n 
+0000014277 00000 n 
+0000017595 00000 n 
+0000017743 00000 n 
+0000021490 00000 n 
+0000021638 00000 n 
+0000026708 00000 n 
+0000026856 00000 n 
+0000030421 00000 n 
+0000030569 00000 n 
+0000033383 00000 n 
+trailer
+<< /Size 22 /Root 1 0 R >>
+startxref
+33531
+%%EOF

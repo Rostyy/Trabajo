@@ -40,7 +40,7 @@ El sistema permite gestionar información relacionada con un servicio técnico. 
 | Código | Requerimiento | Descripción |
 | --- | --- | --- |
 | RF01 | Login de usuarios | El usuario debe iniciar sesión con email y contraseña. |
-| RF02 | Control de acceso por roles | El sistema diferencia permisos entre `admin`, `tecnico` y `cliente`. |
+| RF02 | Control de acceso por roles | El sistema diferencia permisos entre `admin`y `tecnico`. |
 | RF03 | Gestión de clientes | El administrador puede crear, listar, editar y eliminar clientes. El técnico solo puede verlos. |
 | RF04 | Gestión de oficinas | El administrador puede crear, listar, editar y eliminar oficinas. El técnico solo puede verlas. |
 | RF05 | Gestión de dispositivos | Administrador y técnico pueden crear y editar equipos. Solo administrador puede eliminarlos. |

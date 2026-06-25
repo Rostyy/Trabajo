@@ -43,7 +43,7 @@ export default function Login() {
           type="email"
           placeholder="Correo electrónico"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)} //lo que hace que el formulario sea controlado
           required
         /><br />
         <input

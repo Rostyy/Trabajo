@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Informe Tecnico - Sistema de Gestion de Servicio Tecnico</title>
+  <style>
+    @page { size: A4; margin: 16mm 14mm 18mm; }
+    * { box-sizing: border-box; }
+    body { color: #1d2939; font-family: Arial, sans-serif; font-size: 10.5pt; line-height: 1.45; }
+    h1 { color: #0f3d66; font-size: 23pt; margin: 0 0 18pt; page-break-before: always; }
+    h1:first-child { page-break-before: auto; text-align: center; margin-top: 85mm; }
+    h2 { color: #0f3d66; font-size: 16pt; border-bottom: 1px solid #9cc4df; margin: 24pt 0 10pt; padding-bottom: 4pt; page-break-after: avoid; }
+    h3 { color: #175c8a; font-size: 12.5pt; margin: 18pt 0 8pt; page-break-after: avoid; }
+    p { margin: 0 0 8pt; }
+    ul, ol { margin: 4pt 0 10pt; padding-left: 22pt; }
+    li { margin: 2pt 0; }
+    table { border-collapse: collapse; font-size: 8.5pt; margin: 10pt 0 14pt; width: 100%; }
+    th { background: #0f3d66; color: white; font-weight: bold; }
+    th, td { border: 1px solid #b8c8d6; padding: 5pt; text-align: left; vertical-align: top; }
+    tr:nth-child(even) { background: #f4f8fb; }
+    code { background: #edf2f7; border-radius: 2px; font-family: Consolas, monospace; font-size: 8.5pt; padding: 1pt 3pt; }
+    pre.codigo { background: #17212b; color: #e5edf5; font-family: Consolas, monospace; font-size: 7.5pt; overflow-wrap: break-word; padding: 9pt; white-space: pre-wrap; }
+    pre.mermaid { background: #f4f8fb; border: 1px solid #9cc4df; color: #17324d; font-family: Consolas, monospace; font-size: 7.5pt; padding: 9pt; page-break-inside: avoid; white-space: pre-wrap; }
+    svg { max-width: 100%; height: auto; }
+    hr { border: 0; border-top: 1px solid #9cc4df; margin: 20pt 0; }
+  </style>
+</head>
+<body>
+<h1>Informe Técnico - Sistema de Gestión de Servicio Técnico</h1>
+<h2>Portada</h2>
+<p><strong>Proyecto:</strong> Sistema de Gestión de Servicio Técnico  </p>
+<p><strong>Tipo de sistema:</strong> Aplicación web full stack  </p>
+<p><strong>Materia:</strong> Trabajo Práctico Integrador  </p>
+<p><strong>Integrantes:</strong> Completar  </p>
+<p><strong>Docente:</strong> Completar  </p>
+<p><strong>Institución:</strong> Completar  </p>
+<p><strong>Fecha:</strong> Completar  </p>
+<hr>
+<h2>Índice</h2>
+<ol><li>Requerimientos</li><li>Tecnologías utilizadas</li><li>Análisis del sistema</li><li>Planificación</li><li>Riesgos</li><li>Asignación de tareas y roles</li><li>Diseño de base de datos</li><li>Diseño de interfaz</li><li>API del backend</li><li>Componentes del frontend</li><li>Código y flujo de información</li><li>Conclusión</li></ol>
+<hr>
+<h2>1. Requerimientos</h2>
+<h3>Requerimientos del software</h3>
+<p>El sistema permite gestionar información relacionada con un servicio técnico. La aplicación administra clientes, oficinas, dispositivos/equipos, servicios/trabajos técnicos y usuarios con distintos roles.</p>
+<h3>Requerimientos funcionales</h3>
+<table><thead><tr><th>Código</th><th>Requerimiento</th><th>Descripción</th></tr></thead><tbody><tr><td>RF01</td><td>Login de usuarios</td><td>El usuario debe iniciar sesión con email y contraseña.</td></tr><tr><td>RF02</td><td>Control de acceso por roles</td><td>El sistema diferencia permisos entre <code>admin</code>, <code>tecnico</code> y <code>cliente</code>.</td></tr><tr><td>RF03</td><td>Gestión de clientes</td><td>El administrador puede crear, listar, editar y eliminar clientes. El técnico solo puede verlos.</td></tr><tr><td>RF04</td><td>Gestión de oficinas</td><td>El administrador puede crear, listar, editar y eliminar oficinas. El técnico solo puede verlas.</td></tr><tr><td>RF05</td><td>Gestión de dispositivos</td><td>Administrador y técnico pueden crear y editar equipos. Solo administrador puede eliminarlos.</td></tr><tr><td>RF06</td><td>Gestión de servicios</td><td>Administrador y técnico pueden crear y editar trabajos. El técnico solo modifica trabajos asignados a él.</td></tr><tr><td>RF07</td><td>Gestión de usuarios</td><td>Solo administrador puede crear, listar, modificar, eliminar y resetear contraseña de usuarios.</td></tr><tr><td>RF08</td><td>Cambio de contraseña propia</td><td>Todo usuario autenticado puede cambiar su contraseña.</td></tr><tr><td>RF09</td><td>Consulta de relaciones</td><td>El sistema muestra a qué cliente pertenece cada oficina y en qué oficina está cada dispositivo.</td></tr></tbody></table>
+<h3>Requerimientos no funcionales</h3>
+<table><thead><tr><th>Código</th><th>Requerimiento</th><th>Descripción</th></tr></thead><tbody><tr><td>RNF01</td><td>Seguridad</td><td>Uso de JWT para proteger rutas y bcrypt para guardar contraseñas hasheadas.</td></tr><tr><td>RNF02</td><td>Mantenibilidad</td><td>Separación entre rutas, controladores, configuración y frontend por componentes.</td></tr><tr><td>RNF03</td><td>Usabilidad</td><td>Interfaz con paneles separados por módulo y formularios controlados.</td></tr><tr><td>RNF04</td><td>Persistencia</td><td>Base de datos MySQL/MariaDB ejecutada localmente con XAMPP.</td></tr><tr><td>RNF05</td><td>Testeabilidad</td><td>Backend con Jest/Supertest y frontend con Vitest/Testing Library.</td></tr></tbody></table>
+<hr>
+<h2>2. Tecnologías utilizadas</h2>
+<table><thead><tr><th>Capa</th><th>Tecnología</th><th>Uso</th></tr></thead><tbody><tr><td>Frontend</td><td>React</td><td>Construcción de interfaz mediante componentes.</td></tr><tr><td>Frontend</td><td>TypeScript</td><td>Tipado de props, estados y formularios.</td></tr><tr><td>Frontend</td><td>Vite</td><td>Servidor de desarrollo y build del frontend.</td></tr><tr><td>Frontend</td><td>React Router DOM</td><td>Navegación entre login y panel protegido.</td></tr><tr><td>Frontend</td><td>Axios</td><td>Comunicación HTTP con el backend.</td></tr><tr><td>Backend</td><td>Node.js</td><td>Entorno de ejecución JavaScript del servidor.</td></tr><tr><td>Backend</td><td>Express</td><td>Definición de servidor, rutas y middlewares.</td></tr><tr><td>Backend</td><td>MySQL2</td><td>Conexión y consultas a MySQL/MariaDB.</td></tr><tr><td>Backend</td><td>bcryptjs</td><td>Hash y comparación de contraseñas.</td></tr><tr><td>Backend</td><td>jsonwebtoken</td><td>Generación y validación de tokens JWT.</td></tr><tr><td>Base de datos</td><td>MySQL/MariaDB</td><td>Persistencia de usuarios, clientes, oficinas, dispositivos y servicios.</td></tr><tr><td>Testing</td><td>Jest + Supertest</td><td>Pruebas de endpoints del backend.</td></tr><tr><td>Testing</td><td>Vitest + Testing Library</td><td>Pruebas de componentes del frontend.</td></tr></tbody></table>
+<hr>
+<h2>3. Análisis del sistema</h2>
+<h3>Objetivo</h3>
+<p>Desarrollar una aplicación web que permita gestionar las operaciones básicas de un servicio técnico: registrar clientes, oficinas, equipos, trabajos realizados y usuarios encargados.</p>
+<h3>Actores principales</h3>
+<table><thead><tr><th>Actor</th><th>Descripción</th></tr></thead><tbody><tr><td>Administrador</td><td>Gestiona todos los módulos del sistema. Puede crear usuarios, clientes, oficinas, dispositivos y servicios.</td></tr><tr><td>Técnico</td><td>Consulta clientes y oficinas, carga dispositivos, registra servicios y actualiza trabajos asignados.</td></tr><tr><td>Cliente</td><td>Rol previsto en el modelo, con permisos limitados.</td></tr></tbody></table>
+<h3>Flujo general</h3>
+<ol><li>El usuario ingresa email y contraseña en el login.</li><li>El frontend envía <code>POST /auth/login</code> al backend.</li><li>El backend valida credenciales contra la base de datos.</li><li>Si son correctas, genera un token JWT.</li><li>El frontend guarda el token en <code>AuthContext</code> y <code>localStorage</code>.</li><li>Las siguientes peticiones envían el token en el header <code>Authorization</code>.</li><li>El backend valida el token y el rol antes de ejecutar cada operación.</li><li>Los controladores consultan MySQL y devuelven JSON.</li><li>React guarda la respuesta en estado y renderiza tarjetas/listas.</li></ol>
+<hr>
+<h2>4. Planificación</h2>
+<h3>Diagrama Gantt</h3>
+<pre class="mermaid">gantt
+    title Planificación del TPI
+    dateFormat  YYYY-MM-DD
+    section Análisis
+    Relevamiento de requerimientos      :a1, 2026-06-01, 2d
+    Definición de roles y permisos      :a2, after a1, 2d
+    section Diseño
+    Modelo de base de datos             :b1, after a2, 2d
+    Diseño de interfaz                  :b2, after b1, 2d
+    section Desarrollo Backend
+    Configuración Express y MySQL       :c1, after b2, 2d
+    Rutas y controladores CRUD          :c2, after c1, 4d
+    Autenticación JWT y roles           :c3, after c2, 2d
+    section Desarrollo Frontend
+    Estructura React y rutas            :d1, after b2, 2d
+    Paneles y formularios controlados   :d2, after d1, 5d
+    Integración Axios                   :d3, after d2, 2d
+    section Testing y Documentación
+    Pruebas funcionales                 :e1, after c3, 2d
+    Comentarios e informe técnico       :e2, after e1, 3d</pre>
+<h3>Diagrama PERT</h3>
+<pre class="mermaid">flowchart LR
+    A["Requerimientos"] --&gt; B["Modelo de datos"]
+    A --&gt; C["Diseño de interfaz"]
+    B --&gt; D["Backend Express"]
+    D --&gt; E["Rutas y controladores"]
+    E --&gt; F["Autenticación y roles"]
+    C --&gt; G["Frontend React"]
+    G --&gt; H["Formularios controlados"]
+    F --&gt; I["Integración Axios"]
+    H --&gt; I
+    I --&gt; J["Testing"]
+    J --&gt; K["Documentación e informe"]</pre>
+<hr>
+<h2>5. Tabla de riesgos</h2>
+<table><thead><tr><th>Riesgo</th><th>Probabilidad</th><th>Impacto</th><th>Medida preventiva</th><th>Plan de contingencia</th></tr></thead><tbody><tr><td>Errores de conexión con MySQL/XAMPP</td><td>Media</td><td>Alto</td><td>Documentar <code>.env</code> y script SQL.</td><td>Verificar servicio MySQL y credenciales.</td></tr><tr><td>Permisos incorrectos por rol</td><td>Media</td><td>Alto</td><td>Centralizar validación con middlewares.</td><td>Probar endpoints con admin y técnico.</td></tr><tr><td>Formularios con datos incompletos</td><td>Media</td><td>Medio</td><td>Usar inputs <code>required</code> y validaciones backend.</td><td>Mostrar mensajes de error.</td></tr><tr><td>Pérdida de datos por eliminación</td><td>Baja</td><td>Alto</td><td>Restringir DELETE a administrador.</td><td>Confirmaciones antes de eliminar.</td></tr><tr><td>Problemas de codificación con ñ/acentos</td><td>Media</td><td>Medio</td><td>Usar UTF-8 y revisar textos.</td><td>Normalizar nombres y probar login/password.</td></tr><tr><td>Cambios que rompan funcionalidades</td><td>Media</td><td>Alto</td><td>Ejecutar tests backend/frontend.</td><td>Revertir o corregir el módulo afectado.</td></tr></tbody></table>
+<hr>
+<h2>6. Asignación de tareas y roles</h2>
+<h3>Roles del equipo de desarrollo</h3>
+<table><thead><tr><th>Rol</th><th>Responsabilidades</th></tr></thead><tbody><tr><td>Analista</td><td>Relevar requerimientos y definir alcance.</td></tr><tr><td>Diseñador de BD</td><td>Diseñar entidades, claves primarias y foráneas.</td></tr><tr><td>Desarrollador backend</td><td>Implementar Express, rutas, controladores, seguridad y conexión MySQL.</td></tr><tr><td>Desarrollador frontend</td><td>Implementar componentes React, formularios, paneles y navegación.</td></tr><tr><td>Tester</td><td>Probar CRUD, login, permisos y flujo completo.</td></tr><tr><td>Documentador</td><td>Elaborar informe, diagramas y comentarios explicativos.</td></tr></tbody></table>
+<h3>Tareas del proyecto</h3>
+<table><thead><tr><th>Tarea</th><th>Responsable</th><th>Resultado</th></tr></thead><tbody><tr><td>Relevamiento</td><td>Analista</td><td>Lista de requerimientos.</td></tr><tr><td>Diseño de BD</td><td>Diseñador BD</td><td>Script <code>schema.sql</code> y modelo relacional.</td></tr><tr><td>Backend</td><td>Desarrollador backend</td><td>API REST con Express.</td></tr><tr><td>Frontend</td><td>Desarrollador frontend</td><td>Aplicación React con paneles.</td></tr><tr><td>Seguridad</td><td>Backend</td><td>JWT, bcrypt y roles.</td></tr><tr><td>Testing</td><td>Tester</td><td>Pruebas automáticas y manuales.</td></tr><tr><td>Documentación</td><td>Documentador</td><td>Informe final y comentarios en código.</td></tr></tbody></table>
+<hr>
+<h2>7. Diseño de base de datos</h2>
+<h3>Entidades principales</h3>
+<table><thead><tr><th>Tabla</th><th>Descripción</th></tr></thead><tbody><tr><td><code>usuarios</code></td><td>Usuarios del sistema con rol y contraseña hasheada.</td></tr><tr><td><code>clientes</code></td><td>Clientes del servicio técnico.</td></tr><tr><td><code>oficinas</code></td><td>Oficinas pertenecientes a clientes.</td></tr><tr><td><code>dispositivos</code></td><td>Equipos ubicados en oficinas.</td></tr><tr><td><code>servicios</code></td><td>Trabajos técnicos realizados sobre dispositivos por usuarios.</td></tr></tbody></table>
+<h3>Diagrama E-R</h3>
+<pre class="mermaid">erDiagram
+    CLIENTES ||--o{ OFICINAS : tiene
+    OFICINAS ||--o{ DISPOSITIVOS : contiene
+    DISPOSITIVOS ||--o{ SERVICIOS : recibe
+    USUARIOS ||--o{ SERVICIOS : realiza
+
+    CLIENTES {
+        int id_cliente PK
+        string nombre
+        string cuit
+        string contacto
+        string email
+    }
+
+    OFICINAS {
+        int id_oficina PK
+        int id_cliente FK
+        string direccion
+        string ciudad
+    }
+
+    DISPOSITIVOS {
+        int id_dispositivo PK
+        int id_oficina FK
+        string tipo
+        string marca
+        string modelo
+        enum estado
+    }
+
+    SERVICIOS {
+        int id_servicio PK
+        int id_dispositivo FK
+        int id_usuario FK
+        date fecha
+        enum tipo
+        text descripcion
+        enum estado
+    }
+
+    USUARIOS {
+        int id_usuario PK
+        string nombre
+        string email
+        string contraseña
+        enum rol
+    }</pre>
+<h3>Modelado relacional</h3>
+<pre class="codigo">usuarios(
+  id_usuario PK,
+  nombre,
+  email UNIQUE,
+  contraseña,
+  rol
+)
+
+clientes(
+  id_cliente PK,
+  nombre,
+  cuit UNIQUE,
+  contacto,
+  email
+)
+
+oficinas(
+  id_oficina PK,
+  id_cliente FK -&gt; clientes.id_cliente,
+  direccion,
+  ciudad
+)
+
+dispositivos(
+  id_dispositivo PK,
+  id_oficina FK -&gt; oficinas.id_oficina,
+  tipo,
+  marca,
+  modelo,
+  estado
+)
+
+servicios(
+  id_servicio PK,
+  id_dispositivo FK -&gt; dispositivos.id_dispositivo,
+  id_usuario FK -&gt; usuarios.id_usuario,
+  fecha,
+  tipo,
+  descripcion,
+  estado
+)</pre>
+<h3>Normalización</h3>
+<p>La base está separada por entidades para evitar redundancia:</p>
+<ul><li>Los datos del cliente se guardan una sola vez en <code>clientes</code>.</li><li>Cada oficina referencia a un cliente mediante <code>id_cliente</code>.</li><li>Cada dispositivo referencia a una oficina mediante <code>id_oficina</code>.</li><li>Cada servicio referencia a un dispositivo y a un usuario técnico.</li></ul>
+<p>Esto permite mantener integridad referencial mediante claves foráneas.</p>
+<hr>
+<h2>8. Diseño de interfaz</h2>
+<h3>Vistas principales</h3>
+<table><thead><tr><th>Vista</th><th>Descripción</th></tr></thead><tbody><tr><td>Login</td><td>Formulario para iniciar sesión.</td></tr><tr><td>Panel</td><td>Vista principal posterior al login.</td></tr><tr><td>Clientes</td><td>Lista clientes y permite CRUD según rol.</td></tr><tr><td>Oficinas</td><td>Lista oficinas y muestra cliente asociado.</td></tr><tr><td>Dispositivos</td><td>Lista equipos, ubicación y condición.</td></tr><tr><td>Servicios</td><td>Lista trabajos técnicos y permite cambiar estado.</td></tr><tr><td>Usuarios</td><td>Administración de usuarios.</td></tr><tr><td>Cambiar contraseña</td><td>Formulario para actualizar contraseña propia.</td></tr></tbody></table>
+<h3>Interfaz y navegación</h3>
+<pre class="mermaid">flowchart TD
+    A["Login"] --&gt;|credenciales correctas| B["Panel"]
+    B --&gt; C["Clientes"]
+    B --&gt; D["Oficinas"]
+    B --&gt; E["Dispositivos"]
+    B --&gt; F["Servicios"]
+    B --&gt; G["Usuarios"]
+    B --&gt; H["Cambiar contraseña"]
+    B --&gt;|Cerrar sesión| A</pre>
+<hr>
+<h2>9. API del backend</h2>
+<h3>Autenticación</h3>
+<table><thead><tr><th>Método</th><th>Ruta</th><th>Descripción</th></tr></thead><tbody><tr><td>POST</td><td><code>/auth/login</code></td><td>Valida credenciales y devuelve token JWT.</td></tr></tbody></table>
+<h3>Clientes</h3>
+<table><thead><tr><th>Método</th><th>Ruta</th><th>Rol</th><th>Descripción</th></tr></thead><tbody><tr><td>GET</td><td><code>/clientes</code></td><td>admin, tecnico</td><td>Lista clientes.</td></tr><tr><td>POST</td><td><code>/clientes</code></td><td>admin</td><td>Crea cliente.</td></tr><tr><td>PUT</td><td><code>/clientes/:id</code></td><td>admin</td><td>Modifica cliente.</td></tr><tr><td>DELETE</td><td><code>/clientes/:id</code></td><td>admin</td><td>Elimina cliente.</td></tr></tbody></table>
+<h3>Oficinas</h3>
+<table><thead><tr><th>Método</th><th>Ruta</th><th>Rol</th><th>Descripción</th></tr></thead><tbody><tr><td>GET</td><td><code>/oficinas</code></td><td>admin, tecnico</td><td>Lista oficinas con cliente asociado.</td></tr><tr><td>POST</td><td><code>/oficinas</code></td><td>admin</td><td>Crea oficina.</td></tr><tr><td>PUT</td><td><code>/oficinas/:id</code></td><td>admin</td><td>Modifica oficina.</td></tr><tr><td>DELETE</td><td><code>/oficinas/:id</code></td><td>admin</td><td>Elimina oficina.</td></tr></tbody></table>
+<h3>Dispositivos</h3>
+<table><thead><tr><th>Método</th><th>Ruta</th><th>Rol</th><th>Descripción</th></tr></thead><tbody><tr><td>GET</td><td><code>/dispositivos</code></td><td>admin, tecnico</td><td>Lista equipos con oficina y cliente.</td></tr><tr><td>POST</td><td><code>/dispositivos</code></td><td>admin, tecnico</td><td>Crea equipo.</td></tr><tr><td>PUT</td><td><code>/dispositivos/:id</code></td><td>admin, tecnico</td><td>Modifica equipo.</td></tr><tr><td>DELETE</td><td><code>/dispositivos/:id</code></td><td>admin</td><td>Elimina equipo.</td></tr></tbody></table>
+<h3>Servicios</h3>
+<table><thead><tr><th>Método</th><th>Ruta</th><th>Rol</th><th>Descripción</th></tr></thead><tbody><tr><td>GET</td><td><code>/servicios</code></td><td>admin, tecnico</td><td>Admin ve todos; técnico ve asignados.</td></tr><tr><td>POST</td><td><code>/servicios</code></td><td>admin, tecnico</td><td>Crea trabajo.</td></tr><tr><td>PUT</td><td><code>/servicios/:id</code></td><td>admin, tecnico</td><td>Modifica trabajo. Técnico solo si está asignado.</td></tr><tr><td>DELETE</td><td><code>/servicios/:id</code></td><td>admin</td><td>Elimina trabajo.</td></tr></tbody></table>
+<h3>Usuarios</h3>
+<table><thead><tr><th>Método</th><th>Ruta</th><th>Rol</th><th>Descripción</th></tr></thead><tbody><tr><td>GET</td><td><code>/usuarios</code></td><td>admin</td><td>Lista usuarios.</td></tr><tr><td>POST</td><td><code>/usuarios</code></td><td>admin</td><td>Crea usuario.</td></tr><tr><td>PUT</td><td><code>/usuarios/:id</code></td><td>admin</td><td>Modifica usuario.</td></tr><tr><td>PUT</td><td><code>/usuarios/:id/password</code></td><td>admin</td><td>Resetea contraseña de otro usuario.</td></tr><tr><td>DELETE</td><td><code>/usuarios/:id</code></td><td>admin</td><td>Elimina usuario.</td></tr><tr><td>PUT</td><td><code>/usuarios/password</code></td><td>autenticado</td><td>Cambia contraseña propia.</td></tr></tbody></table>
+<hr>
+<h2>10. Componentes del frontend</h2>
+<table><thead><tr><th>Componente</th><th>Descripción</th><th>Estado propio</th><th>Props relevantes</th></tr></thead><tbody><tr><td><code>App</code></td><td>Define rutas y proveedores globales.</td><td>No</td><td>No</td></tr><tr><td><code>AuthProvider</code></td><td>Maneja sesión global.</td><td><code>token</code>, <code>usuario</code></td><td><code>children</code></td></tr><tr><td><code>RutaPrivada</code></td><td>Protege rutas según token.</td><td>No</td><td><code>children</code></td></tr><tr><td><code>Login</code></td><td>Formulario de inicio de sesión.</td><td><code>email</code>, <code>contraseña</code>, <code>error</code></td><td>No</td></tr><tr><td><code>Panel</code></td><td>Menú principal y renderizado condicional.</td><td><code>vista</code></td><td>No</td></tr><tr><td><code>ClientesPanel</code></td><td>Lista y CRUD de clientes.</td><td><code>clientes</code>, <code>mostrarModal</code>, <code>clienteSeleccionado</code></td><td>No</td></tr><tr><td><code>FormularioCliente</code></td><td>Formulario controlado de cliente.</td><td><code>form</code></td><td><code>clienteInicial</code>, <code>onGuardar</code>, <code>onCancelar</code></td></tr><tr><td><code>OficinasPanel</code></td><td>Lista oficinas y clientes asociados.</td><td><code>oficinas</code>, <code>clientes</code>, <code>mostrarModal</code>, <code>oficinaSeleccionada</code></td><td>No</td></tr><tr><td><code>FormularioOficina</code></td><td>Formulario controlado de oficina.</td><td><code>form</code></td><td><code>oficinaInicial</code>, <code>clientes</code>, <code>onGuardar</code>, <code>onCancelar</code></td></tr><tr><td><code>DispositivosPanel</code></td><td>Lista equipos y ubicación.</td><td><code>dispositivos</code>, <code>oficinas</code>, <code>mostrarModal</code>, <code>dispositivoSeleccionado</code></td><td>No</td></tr><tr><td><code>FormularioDispositivo</code></td><td>Formulario controlado de equipo.</td><td><code>form</code></td><td><code>dispositivoInicial</code>, <code>oficinas</code>, <code>onGuardar</code>, <code>onCancelar</code></td></tr><tr><td><code>ServiciosPanel</code></td><td>Lista trabajos y permite edición.</td><td><code>servicios</code>, <code>dispositivos</code>, <code>usuarios</code>, <code>mostrarModal</code>, <code>servicioSeleccionado</code></td><td>No</td></tr><tr><td><code>FormularioServicio</code></td><td>Formulario controlado de servicio.</td><td><code>form</code></td><td><code>servicioInicial</code>, <code>dispositivos</code>, <code>usuarios</code>, <code>onGuardar</code>, <code>onCancelar</code></td></tr><tr><td><code>UsuariosPanel</code></td><td>Administración de usuarios.</td><td><code>usuarios</code>, <code>mostrarModal</code>, <code>usuarioSeleccionado</code></td><td>No</td></tr><tr><td><code>FormularioUsuario</code></td><td>Formulario controlado de usuario.</td><td><code>form</code></td><td><code>usuarioInicial</code>, <code>onGuardar</code>, <code>onCancelar</code></td></tr><tr><td><code>CambiarContraseña</code></td><td>Cambio de contraseña propia.</td><td><code>contraseñaActual</code>, <code>nuevaContraseña</code>, <code>mensaje</code></td><td>No</td></tr></tbody></table>
+<h3>Ciclo de vida de componentes</h3>
+<p>Los paneles usan <code>useEffect</code> para cargar datos al montarse:</p>
+<pre class="codigo">useEffect(() =&gt; {
+  cargarDatos();
+}, [token]);</pre>
+<p>Esto significa:</p>
+<ol><li>El componente se renderiza por primera vez.</li><li>React ejecuta <code>useEffect</code>.</li><li>Se llama al backend con Axios.</li><li>La respuesta se guarda con <code>setEstado</code>.</li><li>React vuelve a renderizar con los datos actualizados.</li></ol>
+<hr>
+<h2>11. Código y flujo de información</h2>
+<h3>Flujo login</h3>
+<p>Frontend:</p>
+<pre class="codigo">const res = await axios.post('http://localhost:3000/auth/login', {
+  email,
+  contraseña,
+});
+
+login(res.data.token, res.data.usuario);
+navigate('/panel');</pre>
+<p>Backend:</p>
+<pre class="codigo">const sql = 'SELECT * FROM usuarios WHERE email = ?';
+db.query(sql, [email], async (err, resultados) =&gt; {
+  const contraseñaValida = await bcrypt.compare(contraseña, usuario.contraseña);
+  const token = jwt.sign({ id: usuario.id_usuario, rol: usuario.rol }, process.env.JWT_SECRET);
+  res.json({ token, usuario });
+});</pre>
+<p>Explicación:</p>
+<ol><li>React captura datos desde inputs controlados.</li><li>Axios envía los datos al backend.</li><li>Express recibe la request en <code>/auth/login</code>.</li><li>El controlador consulta MySQL.</li><li>bcrypt compara la contraseña.</li><li>JWT genera un token.</li><li>El backend responde JSON.</li><li>React guarda sesión y navega al panel.</li></ol>
+<h3>Flujo de alta de dispositivo</h3>
+<p>Frontend:</p>
+<pre class="codigo">await axios.post('http://localhost:3000/dispositivos', form, {
+  headers: { Authorization: `Bearer ${token}` },
+});</pre>
+<p>Backend:</p>
+<pre class="codigo">const { id_oficina, tipo, marca, modelo, estado } = req.body;
+const sql = 'INSERT INTO dispositivos (id_oficina, tipo, marca, modelo, estado) VALUES (?, ?, ?, ?, ?)';
+db.query(sql, [id_oficina, tipo, marca, modelo, estado], (err, resultado) =&gt; {
+  res.status(201).json({ mensaje: 'Dispositivo creado', id: resultado.insertId });
+});</pre>
+<p>Explicación:</p>
+<ol><li><code>FormularioDispositivo</code> mantiene el estado <code>form</code>.</li><li>Al enviar, llama <code>onGuardar(form)</code>.</li><li><code>DispositivosPanel</code> recibe ese objeto y ejecuta Axios.</li><li>El backend valida JWT y rol.</li><li>El controlador lee <code>req.body</code>.</li><li>MySQL inserta el registro.</li><li>El backend devuelve el id creado.</li><li>El frontend recarga la lista con <code>cargarDatos()</code>.</li></ol>
+<h3>Flujo de listado</h3>
+<p>Frontend:</p>
+<pre class="codigo">const res = await axios.get('http://localhost:3000/dispositivos', {
+  headers: { Authorization: `Bearer ${token}` },
+});
+setDispositivos(res.data);</pre>
+<p>Backend:</p>
+<pre class="codigo">const sql = `
+  SELECT d.*, o.direccion AS oficina_direccion, c.nombre AS cliente_nombre
+  FROM dispositivos d
+  JOIN oficinas o ON o.id_oficina = d.id_oficina
+  JOIN clientes c ON c.id_cliente = o.id_cliente
+`;
+db.query(sql, (err, resultados) =&gt; {
+  res.json(resultados);
+});</pre>
+<p>Renderizado:</p>
+<pre class="codigo">{dispositivos.map((disp) =&gt; (
+  &lt;div key={disp.id_dispositivo} className="card"&gt;
+    &lt;h3&gt;{disp.tipo} - {disp.marca} {disp.modelo}&lt;/h3&gt;
+  &lt;/div&gt;
+))}</pre>
+<p>Explicación:</p>
+<ul><li><code>GET</code> pide datos.</li><li>MySQL devuelve un arreglo.</li><li><code>res.json(resultados)</code> envía ese arreglo al frontend.</li><li><code>setDispositivos</code> actualiza el estado.</li><li><code>map()</code> transforma cada objeto en una tarjeta.</li><li><code>key</code> ayuda a React a identificar cada elemento.</li></ul>
+<hr>
+<h2>12. Conclusión</h2>
+<p>El proyecto implementa una aplicación full stack funcional con separación clara entre frontend, backend y base de datos. React se encarga de la interfaz mediante componentes, estados, props y formularios controlados. Express organiza la API en rutas, middlewares y controladores. MySQL almacena los datos relacionales y mantiene integridad mediante claves primarias y foráneas.</p>
+<p>El flujo completo permite explicar cómo un dato ingresado por el usuario viaja desde un formulario React hacia el backend, se procesa en Express, se guarda o consulta en MySQL y vuelve al frontend como JSON para ser renderizado en pantalla.</p>
+</body>
+</html>
